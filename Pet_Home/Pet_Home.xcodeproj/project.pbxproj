@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		DCD2F0E62779ADE6003CC9EF /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCD2F0E42779ADE6003CC9EF /* PostTableViewCell.swift */; };
-		DCD2F0E72779ADE6003CC9EF /* PostTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DCD2F0E52779ADE6003CC9EF /* PostTableViewCell.xib */; };
 		DCF0BD63277623320038FAF9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF0BD62277623320038FAF9 /* AppDelegate.swift */; };
 		DCF0BD65277623320038FAF9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF0BD64277623320038FAF9 /* SceneDelegate.swift */; };
 		DCF0BD67277623320038FAF9 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF0BD66277623320038FAF9 /* LoginViewController.swift */; };
@@ -28,8 +26,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		DCD2F0E42779ADE6003CC9EF /* PostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTableViewCell.swift; sourceTree = "<group>"; };
-		DCD2F0E52779ADE6003CC9EF /* PostTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PostTableViewCell.xib; sourceTree = "<group>"; };
 		DCF0BD5F277623320038FAF9 /* Pet_Home.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pet_Home.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DCF0BD62277623320038FAF9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DCF0BD64277623320038FAF9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -80,14 +76,14 @@
 		DCF0BD61277623320038FAF9 /* Pet_Home */ = {
 			isa = PBXGroup;
 			children = (
-				DCF0BD62277623320038FAF9 /* AppDelegate.swift */,
-				DCF0BD64277623320038FAF9 /* SceneDelegate.swift */,
 				DCF0BD8B2776684A0038FAF9 /* Utilities */,
 				DCF0BD76277633C10038FAF9 /* Model */,
 				DCF0BD79277633E50038FAF9 /* View */,
 				DCF0BD78277633D40038FAF9 /* Controller */,
-				DCF0BD6D277623360038FAF9 /* LaunchScreen.storyboard */,
 				DCF0BD6B277623360038FAF9 /* Assets.xcassets */,
+				DCF0BD64277623320038FAF9 /* SceneDelegate.swift */,
+				DCF0BD62277623320038FAF9 /* AppDelegate.swift */,
+				DCF0BD6D277623360038FAF9 /* LaunchScreen.storyboard */,
 				DCF0BD70277623360038FAF9 /* Info.plist */,
 				DCF0BD7A277634A80038FAF9 /* GoogleService-Info.plist */,
 			);
@@ -115,8 +111,6 @@
 		DCF0BD79277633E50038FAF9 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				DCD2F0E42779ADE6003CC9EF /* PostTableViewCell.swift */,
-				DCD2F0E52779ADE6003CC9EF /* PostTableViewCell.xib */,
 				DCF0BD68277623320038FAF9 /* Main.storyboard */,
 			);
 			path = View;
@@ -199,7 +193,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				DCF0BD6F277623360038FAF9 /* LaunchScreen.storyboard in Resources */,
-				DCD2F0E72779ADE6003CC9EF /* PostTableViewCell.xib in Resources */,
 				DCF0BD7B277634A80038FAF9 /* GoogleService-Info.plist in Resources */,
 				DCF0BD6C277623360038FAF9 /* Assets.xcassets in Resources */,
 				DCF0BD6A277623320038FAF9 /* Main.storyboard in Resources */,
@@ -221,7 +214,6 @@
 				DCF0BD912776A20F0038FAF9 /* ProfileViewController.swift in Sources */,
 				DCF0BD8F277668860038FAF9 /* ActivityIndecator.swift in Sources */,
 				DCF0BD65277623320038FAF9 /* SceneDelegate.swift in Sources */,
-				DCD2F0E62779ADE6003CC9EF /* PostTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

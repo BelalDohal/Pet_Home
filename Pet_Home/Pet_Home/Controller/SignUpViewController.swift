@@ -134,5 +134,4 @@ extension SignUpViewController: UIImagePickerControllerDelegate,UINavigationCont
 }
 
 /*
- 
  */

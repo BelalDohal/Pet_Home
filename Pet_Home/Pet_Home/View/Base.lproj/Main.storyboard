@@ -344,7 +344,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nbB-v4-Pgk" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-658" y="1822"/>
+            <point key="canvasLocation" x="-3002" y="2505"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="4wl-Uo-O4f">
@@ -369,7 +369,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LDB-vN-BB9" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1332" y="1822"/>
+            <point key="canvasLocation" x="-3676" y="2505"/>
         </scene>
         <!--Profile-->
         <scene sceneID="tUG-wz-tFq">
@@ -620,7 +620,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pbr-0e-FbF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-658" y="1163"/>
+            <point key="canvasLocation" x="-3002" y="1846"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="8sR-rk-RBp">
@@ -645,12 +645,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="B4k-fd-ymH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1332" y="1161"/>
+            <point key="canvasLocation" x="-3676" y="1845"/>
         </scene>
         <!--Home-->
         <scene sceneID="8MP-4s-FHa">
             <objects>
-                <viewController modalPresentationStyle="fullScreen" id="iQf-hS-iRR" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="iQf-hS-iRR" customClass="ProfileViewController" customModule="Pet_Home" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Htv-jd-s9m">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -685,6 +685,9 @@
                                         <color key="tintColor" systemColor="systemBackgroundColor"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="+"/>
+                                        <connections>
+                                            <segue destination="zXA-UI-d5H" kind="show" id="OIS-gH-2ZI"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
@@ -880,7 +883,7 @@
                                                     <constraint firstAttribute="trailing" secondItem="nmw-ss-cdX" secondAttribute="trailing" id="czc-ep-DL8"/>
                                                 </constraints>
                                             </stackView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="YHF-4j-OdM">
+                                            <stackView opaque="NO" contentMode="scaleToFill" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="YHF-4j-OdM">
                                                 <rect key="frame" x="30" y="312.5" width="283" height="65"/>
                                                 <subviews>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="gKA-8Q-om4">
@@ -891,8 +894,8 @@
                                                             <constraint firstAttribute="height" constant="65" id="uuQ-Th-WDr"/>
                                                         </constraints>
                                                     </imageView>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Start Chat" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5jg-df-cNj">
-                                                        <rect key="frame" x="75" y="0.0" width="208" height="65"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Start Chat With rhis poster" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5jg-df-cNj">
+                                                        <rect key="frame" x="65" y="0.0" width="218" height="65"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <color key="textColor" systemColor="systemBackgroundColor"/>
                                                         <nil key="highlightedColor"/>
@@ -929,7 +932,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gUg-sK-SQN" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2529" y="1645"/>
+            <point key="canvasLocation" x="2668" y="2034"/>
         </scene>
         <!--Post/Ubdate-->
         <scene sceneID="XRD-Mw-xVW">
@@ -1091,7 +1094,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zLC-i9-0P0" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1750" y="2416"/>
+            <point key="canvasLocation" x="1750" y="2807"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="IiG-ry-eLU">
@@ -1114,8 +1117,8 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="lQh-7f-oMD"/>
-        <segue reference="wH9-db-BHf"/>
+        <segue reference="lBd-KF-6Zo"/>
+        <segue reference="DxC-ay-Twt"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="homekit" catalog="system" width="128" height="106"/>

@@ -37,10 +37,4 @@ class LoginViewController: UIViewController {
     }
 }
 /*
- if authResult != nil {
- if let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "HomeNavigationContoller") as? UINavigationController {
- vc.modalPresentationStyle = .fullScreen
- Activity.removeIndicator(parentView: self.view, childView: self.activityIndicator)
- self.present(vc, animated: true, completion: nil)
- }
  */
