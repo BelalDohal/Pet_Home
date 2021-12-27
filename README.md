@@ -7,8 +7,8 @@
 * 5- As a user I can see other users posts and see the details of the post I selected.
 * 6- As a user I can see my profile and update it.
 * 7- As a user I can delete or update my post.
-=======
-Futures…
+* =======
+* Futures…
 * 8- As a user I can search on other posts.
 * 9- As a user I can chat with other users about the post they have.
 * 10- As a user I can chat with other users about my post.
