@@ -13,6 +13,7 @@ class SignUpViewController: UIViewController {
     }
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
+    @IBOutlet weak var phoneNumberTextField: UITextField!
     @IBOutlet weak var locationTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var confirmPasswordTextField: UITextField!
@@ -30,6 +31,7 @@ class SignUpViewController: UIViewController {
            let imageData = image.jpegData(compressionQuality: 0.25),
            let name = nameTextField.text,
            let email = emailTextField.text,
+           let phoneNumber = passwordTextField.text,
            let location = locationTextField.text,
            let password = passwordTextField.text,
            let confirmPassword = confirmPasswordTextField.text,
@@ -61,6 +63,7 @@ class SignUpViewController: UIViewController {
                                                 "id": authResult.user.uid,
                                                 "name": name,
                                                 "email": email,
+                                                "phoneNumber":phoneNumber,
                                                 "location":location,
                                                 "imageUrl":url.absoluteString,
                                             ]
@@ -69,7 +72,7 @@ class SignUpViewController: UIViewController {
                                                     self.validateLabel.text = "Sign Up Database Error \(error.localizedDescription)"
                                                     self.validateLabel.alpha = 1
                                                 }else {
-                                                    if let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "HomeNavigationContoller") as? UITabBarController {
+                                                    if let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "HomeNavigationContoller") as? UINavigationController {
                                                         vc.modalPresentationStyle = .fullScreen
                                                         Activity.removeIndicator(parentView: self.view, childView: self.activityIndicator)
                                                         self.present(vc, animated: true, completion: nil)
@@ -96,7 +99,6 @@ class SignUpViewController: UIViewController {
     }
 }
 extension SignUpViewController: UIImagePickerControllerDelegate,UINavigationControllerDelegate {
-    // Sellected Image
     @objc func selectImage() {
         showAlert()
     }

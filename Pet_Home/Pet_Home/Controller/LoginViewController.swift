@@ -12,7 +12,6 @@ class LoginViewController: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        
     }
     @IBAction func loginPressed(_ sender: Any) {
         if let email = emailTextField.text,
@@ -25,7 +24,7 @@ class LoginViewController: UIViewController {
                     Activity.removeIndicator(parentView: self.view, childView: self.activityIndicator)
                 }else {
                     if authResult != nil {
-                        if let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "HomeNavigationContoller") as? UITabBarController {
+                        if let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "HomeNavigationContoller") as? UINavigationController {
                             vc.modalPresentationStyle = .fullScreen
                             Activity.removeIndicator(parentView: self.view, childView: self.activityIndicator)
                             self.present(vc, animated: true, completion: nil)
