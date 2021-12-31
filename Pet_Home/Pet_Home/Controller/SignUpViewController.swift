@@ -25,17 +25,18 @@ class SignUpViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         imagePickerController.delegate = self
+        Activity.removeIndicator(parentView: self.view, childView: self.activityIndicator)
     }
     @IBAction func signUpPressed(_ sender: Any) {
         if let image = userImageView.image,
            let imageData = image.jpegData(compressionQuality: 0.25),
            let name = nameTextField.text,
            let email = emailTextField.text,
-           let phoneNumber = passwordTextField.text,
+           let phoneNumber = phoneNumberTextField.text,
            let location = locationTextField.text,
            let password = passwordTextField.text,
            let confirmPassword = confirmPasswordTextField.text,
-           confirmPassword == password {
+        confirmPassword == password {
             Activity.showIndicator(parentView: self.view, childView: activityIndicator)
             Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
                 if let error = error {
@@ -136,4 +137,63 @@ extension SignUpViewController: UIImagePickerControllerDelegate,UINavigationCont
 }
 
 /*
+ //            Activity.showIndicator(parentView: self.view, childView: activityIndicator)
+ //            Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
+ //                if let error = error {
+ //                    self.validateLabel.text = "Error Creating User \(error.localizedDescription)"
+ //                    self.validateLabel.alpha = 1
+ //                    Activity.removeIndicator(parentView: self.view, childView: self.activityIndicator)
+ //                }else {
+ //                    if let authResult = authResult {
+ //                        let storageRef = Storage.storage().reference(withPath: "users/\(authResult.user.uid)")
+ //                        let uploadMeta = StorageMetadata.init()
+ //                        uploadMeta.contentType = "image/jpeg"
+ //                        storageRef.putData(imageData, metadata: uploadMeta) { storageMeta, error in
+ //                            if let error = error {
+ //                                self.validateLabel.text = "Sign Up Storage Error \(error.localizedDescription)"
+ //                                self.validateLabel.alpha = 1
+ //                            }else {
+ //                                storageRef.downloadURL { url, error in
+ //                                    if let error = error {
+ //                                        self.validateLabel.text = "Sign Up Storage Download URL Error \(error.localizedDescription)"
+ //                                        self.validateLabel.alpha = 1
+ //                                    }else {
+ //                                        if let url = url {
+ //                                            let db = Firestore.firestore()
+ //                                            let userData: [String:String] = [
+ //                                                "id": authResult.user.uid,
+ //                                                "name": name,
+ //                                                "email": email,
+ //                                                "phoneNumber":phoneNumber,
+ //                                                "location":location,
+ //                                                "imageUrl":url.absoluteString,
+ //                                            ]
+ //                                            db.collection("users").document(authResult.user.uid).setData(userData) { error in
+ //                                                if let error = error {
+ //                                                    self.validateLabel.text = "Sign Up Database Error \(error.localizedDescription)"
+ //                                                    self.validateLabel.alpha = 1
+ //                                                }else {
+ //                                                    if let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "HomeNavigationContoller") as? UINavigationController {
+ //                                                        vc.modalPresentationStyle = .fullScreen
+ //                                                        Activity.removeIndicator(parentView: self.view, childView: self.activityIndicator)
+ //                                                        self.present(vc, animated: true, completion: nil)
+ //                                                    }
+ //                                                }
+ //                                            }
+ //                                        }
+ //                                    }
+ //                                }
+ //                            }
+ //                        }
+ //                    }
+ //                }
+ //            }
+ //        }else {
+ //            if confirmPasswordTextField.text != passwordTextField.text {
+ //                validateLabel.text = "Vertefecation password error"
+ //                validateLabel.alpha = 1
+ //            }else {
+ //                validateLabel.text = "Please fill the empty text fields"
+ //                validateLabel.alpha = 1
+ //            }
  */

@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Login View Controller-->
+        <!--Log in-->
         <scene sceneID="Axk-oS-H14">
             <objects>
                 <viewController id="x1E-aN-hbS" customClass="LoginViewController" customModule="Pet_Home" customModuleProvider="target" sceneMemberID="viewController">
@@ -19,13 +19,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pet Home" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YpR-AA-iuD">
-                                <rect key="frame" x="16" y="70" width="343" height="30"/>
+                                <rect key="frame" x="16" y="114" width="343" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="DmY-6b-NT7">
-                                <rect key="frame" x="16" y="182" width="343" height="100"/>
+                                <rect key="frame" x="16" y="226" width="343" height="100"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="xqs-cQ-SLG">
                                         <rect key="frame" x="0.0" y="0.0" width="343" height="40"/>
@@ -56,7 +56,7 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="UVR-6T-HXB">
-                                <rect key="frame" x="0.0" y="342" width="375" height="107.5"/>
+                                <rect key="frame" x="0.0" y="386" width="375" height="107.5"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Nb-Qo-sK7">
                                         <rect key="frame" x="130" y="0.0" width="115" height="31"/>
@@ -94,6 +94,7 @@
                                             </attributedString>
                                         </buttonConfiguration>
                                         <connections>
+                                            <action selector="signUpPressed:" destination="x1E-aN-hbS" eventType="touchUpInside" id="xx7-sZ-yPU"/>
                                             <segue destination="cGV-gt-J1Y" kind="show" id="MWV-Uz-XfS"/>
                                         </connections>
                                     </button>
@@ -115,18 +116,19 @@
                             <constraint firstItem="UVR-6T-HXB" firstAttribute="leading" secondItem="5kh-MC-5nu" secondAttribute="leading" id="xjR-wv-Hvz"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="Btq-Gl-RdV"/>
+                    <navigationItem key="navigationItem" title="Log in" id="Btq-Gl-RdV"/>
                     <connections>
                         <outlet property="emailTextField" destination="HtL-3C-Atq" id="4I8-At-3I8"/>
                         <outlet property="errorLaber" destination="6kW-rX-wEd" id="Lw1-zP-g7P"/>
                         <outlet property="passwordTextField" destination="XWF-Yc-8aM" id="bg0-6l-cbg"/>
+                        <outlet property="signUpButton" destination="kKA-qi-QgQ" id="QMg-pi-39c"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="R4W-gG-kqp" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="377" y="856"/>
         </scene>
-        <!--Sign Up View Controller-->
+        <!--Sign Up-->
         <scene sceneID="Eqr-WL-xGS">
             <objects>
                 <viewController id="cGV-gt-J1Y" customClass="SignUpViewController" customModule="Pet_Home" customModuleProvider="target" sceneMemberID="viewController">
@@ -135,7 +137,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="XvQ-YJ-9ZF">
-                                <rect key="frame" x="16" y="40" width="343" height="565.5"/>
+                                <rect key="frame" x="16" y="54" width="343" height="565.5"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="xHR-ed-UoS">
                                         <rect key="frame" x="0.0" y="0.0" width="343" height="454"/>
@@ -239,12 +241,11 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="OOx-Lj-9Sq" firstAttribute="trailing" secondItem="XvQ-YJ-9ZF" secondAttribute="trailing" constant="16" id="Iyy-Lh-jLS"/>
-                            <constraint firstItem="XvQ-YJ-9ZF" firstAttribute="top" secondItem="OOx-Lj-9Sq" secondAttribute="top" constant="40" id="NvD-lk-o9G"/>
+                            <constraint firstItem="XvQ-YJ-9ZF" firstAttribute="top" secondItem="OOx-Lj-9Sq" secondAttribute="top" constant="10" id="NvD-lk-o9G"/>
                             <constraint firstItem="XvQ-YJ-9ZF" firstAttribute="leading" secondItem="OOx-Lj-9Sq" secondAttribute="leading" constant="16" id="gRi-Gg-syN"/>
-                            <constraint firstItem="OOx-Lj-9Sq" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="XvQ-YJ-9ZF" secondAttribute="bottom" constant="52" id="rzR-mZ-ePj"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="LNg-7d-src"/>
+                    <navigationItem key="navigationItem" title="Sign Up" id="LNg-7d-src"/>
                     <connections>
                         <outlet property="confirmPasswordTextField" destination="nSL-dh-v8z" id="FQU-A5-HQW"/>
                         <outlet property="emailTextField" destination="c0d-SN-Iv9" id="1Hs-ry-70T"/>
@@ -263,9 +264,10 @@
         <!--Navigation Controller-->
         <scene sceneID="TZT-Ye-xe3">
             <objects>
-                <navigationController storyboardIdentifier="LandingNavigationContoller" automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="SrH-U7-IQd" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="LandingNavigationContoller" automaticallyAdjustsScrollViewInsets="NO" id="SrH-U7-IQd" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="v2H-ly-bUS">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -490,13 +492,86 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="FZ8-rD-xAe">
-                                        <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="AdoptionPostsCollectionViewCell" id="ESk-6H-AUg" customClass="AdoptionPostsCollectionViewCell" customModule="Pet_Home" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="247"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="VNr-hZ-oFi">
-                                            <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
-                                            <autoresizingMask key="autoresizingMask"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="K1v-Xf-xoT">
+                                            <rect key="frame" x="0.0" y="0.0" width="343" height="247"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="CT8-dX-6YA">
+                                                    <rect key="frame" x="0.0" y="0.0" width="343" height="247"/>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pet Name" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XDF-JY-FtV">
+                                                    <rect key="frame" x="0.0" y="0.0" width="343" height="30"/>
+                                                    <color key="backgroundColor" systemColor="systemYellowColor"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="D0n-Vc-iOZ">
+                                                    <rect key="frame" x="8" y="158.5" width="335" height="80.5"/>
+                                                    <subviews>
+                                                        <stackView opaque="NO" contentMode="scaleToFill" alignment="top" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="a4K-PP-CPN">
+                                                            <rect key="frame" x="0.0" y="0.0" width="192" height="60"/>
+                                                            <subviews>
+                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="UR5-rw-MpL">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="60" height="60"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="width" constant="60" id="OjQ-QK-g46"/>
+                                                                        <constraint firstAttribute="height" constant="60" id="hBX-cO-tcs"/>
+                                                                    </constraints>
+                                                                </imageView>
+                                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="t0d-hv-TRV">
+                                                                    <rect key="frame" x="70" y="0.0" width="122" height="44.5"/>
+                                                                    <subviews>
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Owner name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ahw-hp-bLR">
+                                                                            <rect key="frame" x="0.0" y="0.0" width="111.5" height="24"/>
+                                                                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                                            <nil key="textColor"/>
+                                                                            <nil key="highlightedColor"/>
+                                                                        </label>
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pet Descreption" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v7g-fO-Sar">
+                                                                            <rect key="frame" x="0.0" y="24" width="122" height="20.5"/>
+                                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                            <color key="textColor" systemColor="systemGrayColor"/>
+                                                                            <color key="highlightedColor" systemColor="systemGrayColor"/>
+                                                                        </label>
+                                                                    </subviews>
+                                                                </stackView>
+                                                            </subviews>
+                                                        </stackView>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Owner Location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pmD-AS-fdg">
+                                                            <rect key="frame" x="0.0" y="60" width="120" height="20.5"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                </stackView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="XDF-JY-FtV" secondAttribute="trailing" id="Fn0-I1-ZwA"/>
+                                                <constraint firstItem="XDF-JY-FtV" firstAttribute="leading" secondItem="K1v-Xf-xoT" secondAttribute="leading" id="JSo-Sq-u8W"/>
+                                                <constraint firstAttribute="trailing" secondItem="D0n-Vc-iOZ" secondAttribute="trailing" id="SQk-mq-Crn"/>
+                                                <constraint firstAttribute="bottom" secondItem="CT8-dX-6YA" secondAttribute="bottom" id="cVr-DK-vyv"/>
+                                                <constraint firstAttribute="bottom" secondItem="D0n-Vc-iOZ" secondAttribute="bottom" constant="8" id="gBX-5H-eTa"/>
+                                                <constraint firstItem="D0n-Vc-iOZ" firstAttribute="leading" secondItem="K1v-Xf-xoT" secondAttribute="leading" constant="8" id="kG8-lz-sqa"/>
+                                                <constraint firstItem="CT8-dX-6YA" firstAttribute="top" secondItem="K1v-Xf-xoT" secondAttribute="top" id="lWt-YN-xMO"/>
+                                                <constraint firstItem="CT8-dX-6YA" firstAttribute="leading" secondItem="K1v-Xf-xoT" secondAttribute="leading" id="p1J-gu-qC4"/>
+                                                <constraint firstAttribute="trailing" secondItem="CT8-dX-6YA" secondAttribute="trailing" id="sgW-mo-8A0"/>
+                                                <constraint firstItem="XDF-JY-FtV" firstAttribute="top" secondItem="K1v-Xf-xoT" secondAttribute="top" id="xl5-ut-y9J"/>
+                                            </constraints>
                                         </collectionViewCellContentView>
+                                        <size key="customSize" width="343" height="247"/>
+                                        <connections>
+                                            <outlet property="ownerImageView" destination="UR5-rw-MpL" id="b3O-DT-Mab"/>
+                                            <outlet property="ownerLocationLabel" destination="pmD-AS-fdg" id="AxQ-yM-ef6"/>
+                                            <outlet property="ownerNameLabel" destination="ahw-hp-bLR" id="98h-hn-vIq"/>
+                                            <outlet property="petDescreptionLabel" destination="v7g-fO-Sar" id="NIU-PE-XPY"/>
+                                            <outlet property="petImageView" destination="CT8-dX-6YA" id="xj2-eI-2Ax"/>
+                                            <outlet property="petNameLabel" destination="XDF-JY-FtV" id="8Mw-3u-hDb"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
@@ -671,7 +746,7 @@
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="chN-Th-FHf">
                                 <rect key="frame" x="16" y="119" width="343" height="499"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="8t7-Ol-TFQ">
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="8t7-Ol-TFQ">
                                     <size key="itemSize" width="343" height="247"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -679,7 +754,7 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="AdoptionPostsCollectionViewCell" id="uMr-tw-aO1" customClass="AdoptionPostsCollectionViewCell" customModule="Pet_Home" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="126" width="343" height="247"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="247"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Lip-5A-NxT">
                                             <rect key="frame" x="0.0" y="0.0" width="343" height="247"/>

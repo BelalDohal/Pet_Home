@@ -38,19 +38,22 @@ class PostViewController: UIViewController {
             creatNewPostButton.setTitle("Add Post", for: .normal)
         }
     }
+    // Delete
     @objc func handleDelete() {
-        let refrance = Firestore.firestore().collection("posts")
+        let ref = Firestore.firestore().collection("posts")
         if let selectedPost = selectedPost {
             Activity.showIndicator(parentView: self.view, childView: activityIndicator)
-            refrance.document(selectedPost.id).delete { error in
+            ref.document(selectedPost.id).delete { error in
                 if let error = error {
-                    print("Error in bd Delete",error.localizedDescription)
+                    print("Error in db delete",error)
                 }else {
-                    let storageRefrance = Storage.storage().reference(withPath: "posts/\(selectedPost.user.id)/\(selectedPost.id)")
-                    storageRefrance.delete { error in
+                    // Create a reference to the file to delete
+                    let storageRef = Storage.storage().reference(withPath: "posts/\(selectedPost.user.id)/\(selectedPost.id)")
+                    // Delete the file
+                    storageRef.delete { error in
                         if let error = error {
-                            print("Error in Storage Delete",error.localizedDescription)
-                        }else {
+                            print("Error in storage delete",error)
+                        } else {
                             Activity.removeIndicator(parentView: self.view, childView: self.activityIndicator)
                             self.navigationController?.popViewController(animated: true)
                         }
@@ -59,9 +62,10 @@ class PostViewController: UIViewController {
             }
         }
     }
+    // New Post
     @IBAction func creatNewPostPressed(_ sender: Any) {
-        if let petImage = petImageView.image,
-           let petImageData = petImage.jpegData(compressionQuality: 0.25),
+        if let image = petImageView.image,
+           let imageData = image.jpegData(compressionQuality: 0.25),
            let petName = petNameTextField.text,
            let petAge = petAgeTextField.text,
            let petGender = petGenderTextField.text,
@@ -78,7 +82,7 @@ class PostViewController: UIViewController {
             let storageRef = Storage.storage().reference(withPath: "posts/\(currentUser.uid)/\(postId)")
             let updloadMeta = StorageMetadata.init()
             updloadMeta.contentType = "image/jpeg"
-            storageRef.putData(petImageData, metadata: updloadMeta) { storageMeta, error in
+            storageRef.putData(imageData, metadata: updloadMeta) { storageMeta, error in
                 if let error = error {
                     print("Upload error",error.localizedDescription)
                 }
@@ -95,9 +99,9 @@ class PostViewController: UIViewController {
                                 "petGender":petGender,
                                 "petType":petType,
                                 "petDescreption":petDescreption,
-                                "petImageData":url.absoluteString,
-                                "createdAt":selectedPost.creatAt ?? FieldValue.serverTimestamp(),
-                                "updatedAt":FieldValue.serverTimestamp()
+                                "imageUrl":url.absoluteString,
+                                "createdAt":selectedPost.createdAt ?? FieldValue.serverTimestamp(),
+                                "updatedAt": FieldValue.serverTimestamp()
                             ]
                         }else {
                             postData = [
@@ -107,9 +111,9 @@ class PostViewController: UIViewController {
                                 "petGender":petGender,
                                 "petType":petType,
                                 "petDescreption":petDescreption,
-                                "petImageData":url.absoluteString,
+                                "imageUrl":url.absoluteString,
                                 "createdAt":FieldValue.serverTimestamp(),
-                                "updatedAt":FieldValue.serverTimestamp()
+                                "updatedAt": FieldValue.serverTimestamp()
                             ]
                         }
                         ref.document(postId).setData(postData) { error in

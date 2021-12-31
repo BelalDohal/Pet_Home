@@ -20,7 +20,7 @@ class AdoptionPostsCollectionViewCell: UICollectionViewCell {
     func configure(with adoptionPost:AdoptionPost) -> UICollectionViewCell {
         petNameLabel.text = adoptionPost.petName
         petDescreptionLabel.text = adoptionPost.petDescreption
-        petImageView.loadImageUsingCache(with: adoptionPost.petImageUrl)
+        petImageView.loadImageUsingCache(with: adoptionPost.imageUrl)
         ownerNameLabel.text = adoptionPost.user.name
         ownerImageView.loadImageUsingCache(with: adoptionPost.user.imageUrl)
         ownerLocationLabel.text = adoptionPost.user.location
