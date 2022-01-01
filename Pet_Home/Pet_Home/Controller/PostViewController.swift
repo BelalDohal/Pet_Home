@@ -16,20 +16,25 @@ class PostViewController: UIViewController {
     @IBOutlet weak var petGenderTextField: UITextField!
     @IBOutlet weak var petTypeTextField: UITextField!
     @IBOutlet weak var petDescreptionTextField: UITextView!
-    @IBOutlet weak var creatNewPostButton: UIButton!
-    var selectedPost:AdoptionPost?
-    var selectedPostImage:UIImage?
+    @IBOutlet weak var creatNewPostButton: UIButton! {
+        didSet {
+            creatNewPostButton.layer.cornerRadius = creatNewPostButton.frame.height/2
+            creatNewPostButton.layer.masksToBounds = true
+        }
+    }
+    var selectedAdoptionPost:AdoptionPost?
+    var selectedAdoptionPostImage:UIImage?
     override func viewDidLoad() {
         super.viewDidLoad()
         imagePickerController.delegate = self
-        if let selectedPost = selectedPost,
-           let selectedPostImage = selectedPostImage {
-            petImageView.image = selectedPostImage
-            petNameTextField.text = selectedPost.petName
-            petAgeTextField.text = selectedPost.petAge
-            petGenderTextField.text = selectedPost.petGender
-            petTypeTextField.text = selectedPost.petType
-            petDescreptionTextField.text = selectedPost.petDescreption
+        if let selectedAdoptionPost = selectedAdoptionPost,
+           let selectedAdoptionPostImage = selectedAdoptionPostImage {
+            petImageView.image = selectedAdoptionPostImage
+            petNameTextField.text = selectedAdoptionPost.petName
+            petAgeTextField.text = selectedAdoptionPost.petAge
+            petGenderTextField.text = selectedAdoptionPost.petGender
+            petTypeTextField.text = selectedAdoptionPost.petType
+            petDescreptionTextField.text = selectedAdoptionPost.petDescreption
             creatNewPostButton.setTitle("Update Post", for: .normal)
             let deleteBarButton = UIBarButtonItem(image: UIImage(systemName: "trash.fill"), style: .plain, target: self, action: #selector(handleDelete))
             deleteBarButton.tintColor = .systemRed
@@ -41,21 +46,22 @@ class PostViewController: UIViewController {
     // Delete
     @objc func handleDelete() {
         let ref = Firestore.firestore().collection("posts")
-        if let selectedPost = selectedPost {
+        if let selectedAdoptionPost = selectedAdoptionPost {
             Activity.showIndicator(parentView: self.view, childView: activityIndicator)
-            ref.document(selectedPost.id).delete { error in
+            ref.document(selectedAdoptionPost.id).delete { error in
                 if let error = error {
                     print("Error in db delete",error)
                 }else {
-                    // Create a reference to the file to delete
-                    let storageRef = Storage.storage().reference(withPath: "posts/\(selectedPost.user.id)/\(selectedPost.id)")
-                    // Delete the file
+                    let storageRef = Storage.storage().reference(withPath: "posts/\(selectedAdoptionPost.user.id)/\(selectedAdoptionPost.id)")
                     storageRef.delete { error in
                         if let error = error {
                             print("Error in storage delete",error)
                         } else {
-                            Activity.removeIndicator(parentView: self.view, childView: self.activityIndicator)
-                            self.navigationController?.popViewController(animated: true)
+                            if let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "HomeNavigationContoller") as? UINavigationController {
+                                vc.modalPresentationStyle = .fullScreen
+                                Activity.removeIndicator(parentView: self.view, childView: self.activityIndicator)
+                                self.present(vc, animated: true, completion: nil)
+                            }
                         }
                     }
                 }
@@ -74,8 +80,8 @@ class PostViewController: UIViewController {
            let currentUser = Auth.auth().currentUser {
             Activity.showIndicator(parentView: self.view, childView: activityIndicator)
             var postId = ""
-            if let selectedPost = selectedPost {
-                postId = selectedPost.id
+            if let selectedAdoptionPost = selectedAdoptionPost {
+                postId = selectedAdoptionPost.id
             }else {
                 postId = "\(Firebase.UUID())"
             }
@@ -91,16 +97,16 @@ class PostViewController: UIViewController {
                     if let url = url {
                         let db = Firestore.firestore()
                         let ref = db.collection("posts")
-                        if let selectedPost = self.selectedPost {
+                        if let selectedAdoptionPost = self.selectedAdoptionPost {
                             postData = [
-                                "userId":selectedPost.user.id,
+                                "userId":selectedAdoptionPost.user.id,
                                 "petName":petName,
                                 "petAge":petAge,
                                 "petGender":petGender,
                                 "petType":petType,
                                 "petDescreption":petDescreption,
                                 "imageUrl":url.absoluteString,
-                                "createdAt":selectedPost.createdAt ?? FieldValue.serverTimestamp(),
+                                "createdAt":selectedAdoptionPost.createdAt ?? FieldValue.serverTimestamp(),
                                 "updatedAt": FieldValue.serverTimestamp()
                             ]
                         }else {

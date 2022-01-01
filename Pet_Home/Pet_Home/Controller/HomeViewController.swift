@@ -3,6 +3,9 @@ import Firebase
 
 class HomeViewController: UIViewController {
     var adoptionPosts = [AdoptionPost]()
+    var selectedAdoptionPost:AdoptionPost?
+    var selectedAdoptionPostImage:UIImage?
+    var posterImage:UIImage?
     @IBOutlet weak var userImageView: UIImageView! {
         didSet {
             userImageView.circolarImage()
@@ -28,14 +31,44 @@ class HomeViewController: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        getCurrentUserData()
         getAdoptionPosts()
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let sendTo = segue.destination as? DetailsViewController
+        sendTo?.selectedAdoptionPost = selectedAdoptionPost
+        sendTo?.selectedAdoptionPostImage = selectedAdoptionPostImage
+        sendTo?.posterImage = posterImage
+    }
+    // Upload The Current User Data Function.
+    func getCurrentUserData() {
+        let refrance = Firestore.firestore()
+        if let currentUser = Auth.auth().currentUser {
+            let currentUserId = currentUser.uid
+            refrance.collection("users").document(currentUserId).getDocument { userSnapshot, error in
+                if let error = error {
+                    print("error geting user Snapshot For User Name",error.localizedDescription)
+                }else{
+                    if let userSnapshot = userSnapshot {
+                        let userData = userSnapshot.data()
+                        if let userData = userData {
+                            let currentUserData = User(dict: userData)
+                            DispatchQueue.main.async {
+                                self.userNameLabel.text = currentUserData.name
+                                self.userImageView.loadImageUsingCache(with: currentUserData.imageUrl)
+                            }
+                        }else {
+                            print("User data not found or not the same !!!!!!!!!!!!!")
+                        }
+                    }
+                }
+            }
+        }
     }
     // Upload The collection View Main Function.
     func getAdoptionPosts() {
         let ref = Firestore.firestore()
-        ref.collection("posts").order(by: "createdAt",descending: true).addSnapshotListener { snapshot, error in
+        ref.collection("posts").order(by: "updatedAt",descending: true).addSnapshotListener { snapshot, error in
             if let error = error {
                 print("DB ERROR Posts",error.localizedDescription)
             }
@@ -84,20 +117,28 @@ class HomeViewController: UIViewController {
         }
     }
 }
-extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        print("AdoptionPosts Count !!!!",adoptionPosts.count)
-        print("AdoptionPosts !!!!",adoptionPosts)
         return adoptionPosts.count
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "AdoptionPostsCollectionViewCell", for: indexPath) as! AdoptionPostsCollectionViewCell
-        cell.backgroundColor = .systemBlue
+        cell.layer.cornerRadius = 20
+        cell.layer.masksToBounds = true
         return cell.configure(with: adoptionPosts[indexPath.row])
     }
-    
-    
-    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let cellLayout = CGSize(width: adoptionPostCollectionView.frame.width-15, height: adoptionPostCollectionView.frame.height/2.5)
+        return cellLayout
+    }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let cell = collectionView.cellForItem(at: indexPath) as! AdoptionPostsCollectionViewCell
+        selectedAdoptionPost = adoptionPosts[indexPath.row]
+        selectedAdoptionPostImage = cell.petImageView.image
+        posterImage = cell.ownerImageView.image
+        collectionView.deselectItem(at: indexPath, animated: false)
+        performSegue(withIdentifier: "fromHomeToDetails", sender: self)
+    }
     @objc func goToProfile() {
         performSegue(withIdentifier: "fromHomeToProfile", sender: self)
     }

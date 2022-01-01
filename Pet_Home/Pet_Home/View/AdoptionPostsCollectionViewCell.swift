@@ -2,12 +2,7 @@ import UIKit
 
 class AdoptionPostsCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var petImageView: UIImageView!
-    @IBOutlet weak var petNameLabel: UILabel! {
-        didSet {
-            petNameLabel.layer.cornerRadius = petNameLabel.frame.height/2
-            petNameLabel.layer.masksToBounds = true
-        }
-    }
+    @IBOutlet weak var petNameLabel: UILabel!
     @IBOutlet weak var ownerImageView: UIImageView! {
         didSet {
             ownerImageView.circolarImage()
