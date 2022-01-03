@@ -6,6 +6,7 @@ class HomeViewController: UIViewController {
     var selectedAdoptionPost:AdoptionPost?
     var selectedAdoptionPostImage:UIImage?
     var posterImage:UIImage?
+    let navigatedFrom = "Home"
     @IBOutlet weak var userImageView: UIImageView! {
         didSet {
             userImageView.circolarImage()

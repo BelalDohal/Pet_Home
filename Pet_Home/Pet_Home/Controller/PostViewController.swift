@@ -4,6 +4,8 @@ import Firebase
 class PostViewController: UIViewController {
     let imagePickerController = UIImagePickerController()
     let activityIndicator = UIActivityIndicatorView()
+    var navigateFrom = ""
+    @IBOutlet weak var postNavigationItem: UINavigationItem!
     @IBOutlet weak var petImageView: UIImageView! {
         didSet {
             petImageView.isUserInteractionEnabled = true
@@ -29,6 +31,7 @@ class PostViewController: UIViewController {
         imagePickerController.delegate = self
         if let selectedAdoptionPost = selectedAdoptionPost,
            let selectedAdoptionPostImage = selectedAdoptionPostImage {
+            postNavigationItem.title = "Update"
             petImageView.image = selectedAdoptionPostImage
             petNameTextField.text = selectedAdoptionPost.petName
             petAgeTextField.text = selectedAdoptionPost.petAge
@@ -57,10 +60,17 @@ class PostViewController: UIViewController {
                         if let error = error {
                             print("Error in storage delete",error)
                         } else {
-                            if let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "HomeNavigationContoller") as? UINavigationController {
-                                vc.modalPresentationStyle = .fullScreen
-                                Activity.removeIndicator(parentView: self.view, childView: self.activityIndicator)
-                                self.present(vc, animated: true, completion: nil)
+                            if self.navigateFrom == "Home" {
+                                if let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "HomeNavigationContoller") as? UINavigationController {
+                                    vc.modalPresentationStyle = .fullScreen
+                                    Activity.removeIndicator(parentView: self.view, childView: self.activityIndicator)
+                                    self.present(vc, animated: true, completion: nil)
+                                }else{
+                                    let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "profileViewController") as UIViewController
+                                    vc.modalPresentationStyle = .fullScreen
+                                    Activity.removeIndicator(parentView: self.view, childView: self.activityIndicator)
+                                    self.present(vc, animated: true, completion: nil)
+                                }
                             }
                         }
                     }

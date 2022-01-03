@@ -12,6 +12,8 @@
 		DCA551642779DCC600ECD1BC /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA551632779DCC600ECD1BC /* DetailsViewController.swift */; };
 		DCA5516A277AE6E900ECD1BC /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA55169277AE6E900ECD1BC /* User.swift */; };
 		DCA5516D277B3F8B00ECD1BC /* AdoptionPostsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA5516B277B3F8B00ECD1BC /* AdoptionPostsCollectionViewCell.swift */; };
+		DCD94C2827810B0300319912 /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCD94C2727810B0300319912 /* Localization.swift */; };
+		DCD94C2B27810BE300319912 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = DCD94C2D27810BE300319912 /* Localizable.strings */; };
 		DCF0BD63277623320038FAF9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF0BD62277623320038FAF9 /* AppDelegate.swift */; };
 		DCF0BD65277623320038FAF9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF0BD64277623320038FAF9 /* SceneDelegate.swift */; };
 		DCF0BD67277623320038FAF9 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF0BD66277623320038FAF9 /* LoginViewController.swift */; };
@@ -36,6 +38,11 @@
 		DCA551632779DCC600ECD1BC /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
 		DCA55169277AE6E900ECD1BC /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		DCA5516B277B3F8B00ECD1BC /* AdoptionPostsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdoptionPostsCollectionViewCell.swift; sourceTree = "<group>"; };
+		DCD94C2727810B0300319912 /* Localization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localization.swift; sourceTree = "<group>"; };
+		DCD94C2C27810BE300319912 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		DCD94C2E27810E7600319912 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/Main.strings; sourceTree = "<group>"; };
+		DCD94C2F27810E7600319912 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		DCD94C3027810E7600319912 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/Localizable.strings; sourceTree = "<group>"; };
 		DCF0BD5F277623320038FAF9 /* Pet_Home.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pet_Home.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DCF0BD62277623320038FAF9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DCF0BD64277623320038FAF9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -90,9 +97,10 @@
 				DCF0BD76277633C10038FAF9 /* Model */,
 				DCF0BD79277633E50038FAF9 /* View */,
 				DCF0BD78277633D40038FAF9 /* Controller */,
-				DCF0BD6B277623360038FAF9 /* Assets.xcassets */,
 				DCF0BD64277623320038FAF9 /* SceneDelegate.swift */,
 				DCF0BD62277623320038FAF9 /* AppDelegate.swift */,
+				DCD94C2D27810BE300319912 /* Localizable.strings */,
+				DCF0BD6B277623360038FAF9 /* Assets.xcassets */,
 				DCF0BD6D277623360038FAF9 /* LaunchScreen.storyboard */,
 				DCF0BD70277623360038FAF9 /* Info.plist */,
 				DCF0BD7A277634A80038FAF9 /* GoogleService-Info.plist */,
@@ -115,9 +123,9 @@
 				DCF0BD66277623320038FAF9 /* LoginViewController.swift */,
 				DCF0BD89277644560038FAF9 /* SignUpViewController.swift */,
 				DCA551612779D87D00ECD1BC /* HomeViewController.swift */,
+				DCF0BD902776A20F0038FAF9 /* ProfileViewController.swift */,
 				DCA551632779DCC600ECD1BC /* DetailsViewController.swift */,
 				DCA5515F2779D87100ECD1BC /* PostViewController.swift */,
-				DCF0BD902776A20F0038FAF9 /* ProfileViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -136,6 +144,7 @@
 			children = (
 				DCF0BD8C277668650038FAF9 /* ImageView.swift */,
 				DCF0BD8E277668860038FAF9 /* ActivityIndecator.swift */,
+				DCD94C2727810B0300319912 /* Localization.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -188,6 +197,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ar,
 			);
 			mainGroup = DCF0BD56277623320038FAF9;
 			packageReferences = (
@@ -207,6 +217,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DCD94C2B27810BE300319912 /* Localizable.strings in Resources */,
 				DCF0BD6F277623360038FAF9 /* LaunchScreen.storyboard in Resources */,
 				DCF0BD7B277634A80038FAF9 /* GoogleService-Info.plist in Resources */,
 				DCF0BD6C277623360038FAF9 /* Assets.xcassets in Resources */,
@@ -230,6 +241,7 @@
 				DCA551622779D87D00ECD1BC /* HomeViewController.swift in Sources */,
 				DCF0BD8A277644560038FAF9 /* SignUpViewController.swift in Sources */,
 				DCA5516A277AE6E900ECD1BC /* User.swift in Sources */,
+				DCD94C2827810B0300319912 /* Localization.swift in Sources */,
 				DCF0BD912776A20F0038FAF9 /* ProfileViewController.swift in Sources */,
 				DCF0BD8F277668860038FAF9 /* ActivityIndecator.swift in Sources */,
 				DCA5516D277B3F8B00ECD1BC /* AdoptionPostsCollectionViewCell.swift in Sources */,
@@ -240,10 +252,20 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		DCD94C2D27810BE300319912 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DCD94C2C27810BE300319912 /* en */,
+				DCD94C3027810E7600319912 /* ar */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		DCF0BD68277623320038FAF9 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				DCF0BD69277623320038FAF9 /* Base */,
+				DCD94C2E27810E7600319912 /* ar */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -252,6 +274,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				DCF0BD6E277623360038FAF9 /* Base */,
+				DCD94C2F27810E7600319912 /* ar */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -263,6 +286,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
@@ -324,6 +348,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";

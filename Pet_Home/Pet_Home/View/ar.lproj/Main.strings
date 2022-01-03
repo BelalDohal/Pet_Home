@@ -1,0 +1,204 @@
+
+/* Class = "UITextField"; placeholder = "Pet Gender"; ObjectID = "0x6-hL-jV7"; */
+"0x6-hL-jV7.placeholder" = "Pet Gender";
+
+/* Class = "UILabel"; text = "Error"; ObjectID = "1Uc-98-7aU"; */
+"1Uc-98-7aU.text" = "Error";
+
+/* Class = "UILabel"; text = "Poster Phone Number"; ObjectID = "5jg-df-cNj"; */
+"5jg-df-cNj.text" = "Poster Phone Number";
+
+/* Class = "UILabel"; text = "Error"; ObjectID = "6kW-rX-wEd"; */
+"6kW-rX-wEd.text" = "Error";
+
+/* Class = "UIButton"; configuration.title = "Login"; ObjectID = "7Nb-Qo-sK7"; */
+"7Nb-Qo-sK7.configuration.title" = "Login";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "7Nb-Qo-sK7"; */
+"7Nb-Qo-sK7.normalTitle" = "Button";
+
+/* Class = "UITextField"; placeholder = "Password"; ObjectID = "8Zk-Td-Cxm"; */
+"8Zk-Td-Cxm.placeholder" = "Password";
+
+/* Class = "UINavigationItem"; title = "Post/Ubdate"; ObjectID = "8sm-V7-qcI"; */
+"8sm-V7-qcI.title" = "Post/Ubdate";
+
+/* Class = "UITextField"; placeholder = "Pet Age"; ObjectID = "9Ox-0L-3Pb"; */
+"9Ox-0L-3Pb.placeholder" = "Pet Age";
+
+/* Class = "UILabel"; text = "Username"; ObjectID = "Bs7-DF-j72"; */
+"Bs7-DF-j72.text" = "Username";
+
+/* Class = "UINavigationItem"; title = "Log in"; ObjectID = "Btq-Gl-RdV"; */
+"Btq-Gl-RdV.title" = "Log in";
+
+/* Class = "UILabel"; text = "Chats"; ObjectID = "DDN-Ya-dJ3"; */
+"DDN-Ya-dJ3.text" = "Chats";
+
+/* Class = "UILabel"; text = "Email"; ObjectID = "GAF-sR-pQP"; */
+"GAF-sR-pQP.text" = "Email";
+
+/* Class = "UILabel"; text = "Pet Name"; ObjectID = "GWL-og-6B3"; */
+"GWL-og-6B3.text" = "Pet Name";
+
+/* Class = "UITextField"; placeholder = "Email"; ObjectID = "HtL-3C-Atq"; */
+"HtL-3C-Atq.placeholder" = "Email";
+
+/* Class = "UIButton"; configuration.title = "Send"; ObjectID = "J5k-3Z-orF"; */
+"J5k-3Z-orF.configuration.title" = "Send";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "J5k-3Z-orF"; */
+"J5k-3Z-orF.normalTitle" = "Button";
+
+/* Class = "UIButton"; configuration.title = "Logout"; ObjectID = "Jh6-2A-XgY"; */
+"Jh6-2A-XgY.configuration.title" = "Logout";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "Jh6-2A-XgY"; */
+"Jh6-2A-XgY.normalTitle" = "Button";
+
+/* Class = "UINavigationItem"; title = "Sign Up"; ObjectID = "LNg-7d-src"; */
+"LNg-7d-src.title" = "Sign Up";
+
+/* Class = "UITextField"; placeholder = "Location"; ObjectID = "LR1-9o-yJI"; */
+"LR1-9o-yJI.placeholder" = "Location";
+
+/* Class = "UILabel"; text = "Phone Number"; ObjectID = "MYR-LL-9gh"; */
+"MYR-LL-9gh.text" = "Phone Number";
+
+/* Class = "UILabel"; text = "Name"; ObjectID = "Muu-Pj-LAx"; */
+"Muu-Pj-LAx.text" = "Name";
+
+/* Class = "UIButton"; configuration.title = "Creat New Post"; ObjectID = "NPB-WW-RKu"; */
+"NPB-WW-RKu.configuration.title" = "Creat New Post";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "NPB-WW-RKu"; */
+"NPB-WW-RKu.normalTitle" = "Button";
+
+/* Class = "UIButton"; configuration.title = "New Post"; ObjectID = "TVB-Bw-wJl"; */
+"TVB-Bw-wJl.configuration.title" = "New Post";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "TVB-Bw-wJl"; */
+"TVB-Bw-wJl.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "Owner Location"; ObjectID = "W2a-NH-BDk"; */
+"W2a-NH-BDk.text" = "Owner Location";
+
+/* Class = "UILabel"; text = "Pet Name"; ObjectID = "XDF-JY-FtV"; */
+"XDF-JY-FtV.text" = "Pet Name";
+
+/* Class = "UILabel"; text = "Location"; ObjectID = "XDu-Vb-e7r"; */
+"XDu-Vb-e7r.text" = "Location";
+
+/* Class = "UITextField"; placeholder = "Password"; ObjectID = "XWF-Yc-8aM"; */
+"XWF-Yc-8aM.placeholder" = "Password";
+
+/* Class = "UILabel"; text = "Pet Descreption"; ObjectID = "Y7U-th-eeG"; */
+"Y7U-th-eeG.text" = "Pet Descreption";
+
+/* Class = "UILabel"; text = "Poster Name"; ObjectID = "YWu-qP-p6z"; */
+"YWu-qP-p6z.text" = "Poster Name";
+
+/* Class = "UILabel"; text = "Pet Home"; ObjectID = "YpR-AA-iuD"; */
+"YpR-AA-iuD.text" = "Pet Home";
+
+/* Class = "UILabel"; text = "Photo"; ObjectID = "Zff-7n-DXA"; */
+"Zff-7n-DXA.text" = "Photo";
+
+/* Class = "UILabel"; text = "Owner name"; ObjectID = "ahw-hp-bLR"; */
+"ahw-hp-bLR.text" = "Owner name";
+
+/* Class = "UITabBarItem"; title = "Home"; ObjectID = "asR-Rd-Pn4"; */
+"asR-Rd-Pn4.title" = "Home";
+
+/* Class = "UITextField"; placeholder = "Email"; ObjectID = "c0d-SN-Iv9"; */
+"c0d-SN-Iv9.placeholder" = "Email";
+
+/* Class = "UITabBarItem"; title = "Item"; ObjectID = "dUK-wT-mKV"; */
+"dUK-wT-mKV.title" = "Item";
+
+/* Class = "UILabel"; text = "Owner name"; ObjectID = "dfb-B3-7iw"; */
+"dfb-B3-7iw.text" = "Owner name";
+
+/* Class = "UILabel"; text = "Pet Type"; ObjectID = "e2p-GG-VYk"; */
+"e2p-GG-VYk.text" = "Pet Type";
+
+/* Class = "UILabel"; text = "Pet Condition-Descreption :_"; ObjectID = "fen-tW-PNR"; */
+"fen-tW-PNR.text" = "Pet Condition-Descreption :_";
+
+/* Class = "UITextField"; placeholder = "Name"; ObjectID = "gB5-AV-sRj"; */
+"gB5-AV-sRj.placeholder" = "Name";
+
+/* Class = "UILabel"; text = "Username"; ObjectID = "gv0-pk-ehj"; */
+"gv0-pk-ehj.text" = "Username";
+
+/* Class = "UINavigationItem"; title = "Details"; ObjectID = "gvv-iN-LuP"; */
+"gvv-iN-LuP.title" = "Details";
+
+/* Class = "UISegmentedControl"; htx-kt-GWT.segmentTitles[0] = "EN"; ObjectID = "htx-kt-GWT"; */
+"htx-kt-GWT.segmentTitles[0]" = "EN";
+
+/* Class = "UISegmentedControl"; htx-kt-GWT.segmentTitles[1] = "AR"; ObjectID = "htx-kt-GWT"; */
+"htx-kt-GWT.segmentTitles[1]" = "AR";
+
+/* Class = "UILabel"; text = "Pet Age"; ObjectID = "j0D-y3-R1A"; */
+"j0D-y3-R1A.text" = "Pet Age";
+
+/* Class = "UIButton"; configuration.title = "Sign Up"; ObjectID = "kKA-qi-QgQ"; */
+"kKA-qi-QgQ.configuration.title" = "Sign Up";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "kKA-qi-QgQ"; */
+"kKA-qi-QgQ.normalTitle" = "Button";
+
+/* Class = "UITextField"; placeholder = "Pet Type"; ObjectID = "l56-m2-SW2"; */
+"l56-m2-SW2.placeholder" = "Pet Type";
+
+/* Class = "UITextField"; placeholder = "Pet Name"; ObjectID = "lRL-mR-3dr"; */
+"lRL-mR-3dr.placeholder" = "Pet Name";
+
+/* Class = "UILabel"; text = "User Location"; ObjectID = "mNZ-7e-gNZ"; */
+"mNZ-7e-gNZ.text" = "User Location";
+
+/* Class = "UILabel"; text = "Pet Name"; ObjectID = "nPu-tJ-HO0"; */
+"nPu-tJ-HO0.text" = "Pet Name";
+
+/* Class = "UITextField"; placeholder = "Vertify Password"; ObjectID = "nSL-dh-v8z"; */
+"nSL-dh-v8z.placeholder" = "Vertify Password";
+
+/* Class = "UISegmentedControl"; oxP-j2-Ktj.segmentTitles[0] = "EN"; ObjectID = "oxP-j2-Ktj"; */
+"oxP-j2-Ktj.segmentTitles[0]" = "EN";
+
+/* Class = "UISegmentedControl"; oxP-j2-Ktj.segmentTitles[1] = "AR"; ObjectID = "oxP-j2-Ktj"; */
+"oxP-j2-Ktj.segmentTitles[1]" = "AR";
+
+/* Class = "UIButton"; configuration.title = "Sign Up"; ObjectID = "pW9-n7-1YC"; */
+"pW9-n7-1YC.configuration.title" = "Sign Up";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "pW9-n7-1YC"; */
+"pW9-n7-1YC.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "Owner Location"; ObjectID = "pmD-AS-fdg"; */
+"pmD-AS-fdg.text" = "Owner Location";
+
+/* Class = "UITextField"; placeholder = "Searsh..."; ObjectID = "qJK-mX-jkj"; */
+"qJK-mX-jkj.placeholder" = "Searsh...";
+
+/* Class = "UITextField"; placeholder = "Phone Number"; ObjectID = "sXa-gr-HXy"; */
+"sXa-gr-HXy.placeholder" = "Phone Number";
+
+/* Class = "UINavigationItem"; title = "Home"; ObjectID = "syV-Lc-aKp"; */
+"syV-Lc-aKp.title" = "Home";
+
+/* Class = "UILabel"; text = "Pet Gender"; ObjectID = "uBb-LM-T8G"; */
+"uBb-LM-T8G.text" = "Pet Gender";
+
+/* Class = "UITextView"; text = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda."; ObjectID = "uVS-iG-6bC"; */
+"uVS-iG-6bC.text" = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.";
+
+/* Class = "UILabel"; text = "Pet Descreption"; ObjectID = "v7g-fO-Sar"; */
+"v7g-fO-Sar.text" = "Pet Descreption";
+
+/* Class = "UILabel"; text = "Video"; ObjectID = "vv7-5F-3je"; */
+"vv7-5F-3je.text" = "Video";
+
+/* Class = "UILabel"; text = "Your Posts"; ObjectID = "xta-M1-aC0"; */
+"xta-M1-aC0.text" = "Your Posts";

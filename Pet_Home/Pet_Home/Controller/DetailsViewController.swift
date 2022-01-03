@@ -5,7 +5,7 @@ class DetailsViewController: UIViewController {
     var selectedAdoptionPost:AdoptionPost?
     var selectedAdoptionPostImage:UIImage?
     var posterImage:UIImage?
-    var currentUser = Auth.auth().currentUser
+    var navigatedFrom = ""
     @IBOutlet weak var posterImageView: UIImageView! {
         didSet {
             posterImageView.circolarImage()
@@ -42,7 +42,8 @@ class DetailsViewController: UIViewController {
             posterLocationLabel.text = selectedAdoptionPost.user.location
             petDescreptionTextView.text = selectedAdoptionPost.petDescreption
             posterNumberLabel.text = selectedAdoptionPost.user.phoneNumber
-            if let currentUserId = currentUser?.uid,
+            let currentUserId = Auth.auth().currentUser?.uid
+            if let currentUserId = currentUserId,
                currentUserId == posterId {
                 posterNumberLabel.text = "Update This Post"
                 let tapGesture = UITapGestureRecognizer(target: self, action: #selector(goToPost))
@@ -54,6 +55,7 @@ class DetailsViewController: UIViewController {
         let sendTo = segue.destination as? PostViewController
         sendTo?.selectedAdoptionPost = selectedAdoptionPost
         sendTo?.selectedAdoptionPostImage = selectedAdoptionPostImage
+        sendTo?.navigateFrom = navigatedFrom
     }
 }
 extension DetailsViewController {

@@ -3,6 +3,9 @@ import Firebase
 
 class ProfileViewController: UIViewController {
     var currentUserAdoptionPosts = [AdoptionPost]()
+    var selectedAdoptionPost: AdoptionPost?
+    var selectedAdoptionPostImage: UIImage?
+    let navigatedFrom = "Profile"
     @IBOutlet weak var userImageView: UIImageView! {
         didSet {
             userImageView.circolarImage()
@@ -30,10 +33,16 @@ class ProfileViewController: UIViewController {
             userAdoptionPostsCollectionView.dataSource = self
         }
     }
+    @IBOutlet weak var languageSegmentedControl: UISegmentedControl!
     override func viewDidLoad() {
         super.viewDidLoad()
         getCurrentUserData()
         getAdoptionPosts()
+    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let sendTo = segue.destination as? PostViewController
+        sendTo?.selectedAdoptionPost = selectedAdoptionPost
+        sendTo?.selectedAdoptionPostImage = selectedAdoptionPostImage
     }
     func getCurrentUserData() {
         let refrance = Firestore.firestore()
@@ -142,5 +151,12 @@ extension ProfileViewController: UICollectionViewDelegate, UICollectionViewDataS
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let cellLayout = CGSize(width: userAdoptionPostsCollectionView.frame.width-15, height: userAdoptionPostsCollectionView.frame.height/2.5)
         return cellLayout
+    }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let cell = collectionView.cellForItem(at: indexPath) as! AdoptionPostsCollectionViewCell
+        selectedAdoptionPost = currentUserAdoptionPosts[indexPath.row]
+        selectedAdoptionPostImage = cell.petImageView.image
+        collectionView.deselectItem(at: indexPath, animated: false)
+        performSegue(withIdentifier: "fromProfileToDetails", sender: self)
     }
 }

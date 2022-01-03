@@ -1,0 +1,25 @@
+"logIn" = "تسجيل الدخول";
+"petHome" = "بت هوم";
+"email" = "الإيميل الشخصي";
+"password" = "كلمة السر";
+//"ErrorOfTheLogIn" = ""; //===================
+"signUp" = "إنشاء حساب جديد";
+"name" = "الإسم";
+"location" = "الموقع";
+"phoneNumber" = "رقم الجوال";
+"vertifyPassword" = "تأكيد كلمة السر";
+//"ErrorOfTheSignUp" = ""; //===================
+"home" = "الصفحة الرئيسية";
+"logOut" = "تسجيل خروج";
+"newAdoptionPost" = "إعلان تبني جديد";
+"yourPosts" = "إعلاناتك";
+"profile" = "الملف الشخصي";
+"post" = "إعلان";
+"ubdate" = "تحديث";
+"petName" = "إسم الحيوان الأليف";
+"petAge" = "عمر الحيوان الأليف";
+"petGender" = "جنس الحيوان الأليف";
+"petType" = "نوع الحيوان الأليف";
+"descreption" = "معلومات عن الحيوان الأليف";
+"creatNewPost" = "إعلان جديد";
+

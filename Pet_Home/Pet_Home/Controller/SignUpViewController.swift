@@ -11,21 +11,54 @@ class SignUpViewController: UIViewController {
             userImageView.addGestureRecognizer(tapGesture)
         }
     }
-    @IBOutlet weak var nameTextField: UITextField!
-    @IBOutlet weak var emailTextField: UITextField!
-    @IBOutlet weak var phoneNumberTextField: UITextField!
-    @IBOutlet weak var locationTextField: UITextField!
-    @IBOutlet weak var passwordTextField: UITextField!
-    @IBOutlet weak var confirmPasswordTextField: UITextField!
+    @IBOutlet weak var nameTextField: UITextField! {
+        didSet{
+            nameTextField.placeholder = "name".localiz
+        }
+    }
+    @IBOutlet weak var emailTextField: UITextField! {
+        didSet{
+            emailTextField.placeholder = "email".localiz
+        }
+    }
+    @IBOutlet weak var phoneNumberTextField: UITextField! {
+        didSet{
+            phoneNumberTextField.placeholder = "phoneNumber".localiz
+        }
+    }
+    @IBOutlet weak var locationTextField: UITextField! {
+        didSet{
+            locationTextField.placeholder = "location".localiz
+        }
+    }
+    @IBOutlet weak var passwordTextField: UITextField! {
+        didSet{
+            passwordTextField.placeholder = "password".localiz
+        }
+    }
+    @IBOutlet weak var confirmPasswordTextField: UITextField! {
+        didSet{
+            confirmPasswordTextField.placeholder = "vertifyPassword".localiz
+        }
+    }
     @IBOutlet weak var validateLabel: UILabel! {
-        didSet {
+        didSet{
             validateLabel.alpha = 0
+        }
+    }
+    @IBOutlet weak var signUpNavigationItem: UINavigationItem! {
+        didSet{
+            signUpNavigationItem.title = "signUp".localiz
+        }
+    }
+    @IBOutlet weak var signUpButton: UIButton! {
+        didSet {
+            signUpButton.setTitle(NSLocalizedString("signUp", comment: ""), for: .normal)
         }
     }
     override func viewDidLoad() {
         super.viewDidLoad()
         imagePickerController.delegate = self
-        Activity.removeIndicator(parentView: self.view, childView: self.activityIndicator)
     }
     @IBAction func signUpPressed(_ sender: Any) {
         if let image = userImageView.image,

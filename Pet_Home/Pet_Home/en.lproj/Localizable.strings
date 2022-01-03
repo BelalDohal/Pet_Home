@@ -1,0 +1,24 @@
+"logIn" = "Log In";
+"petHome" = "Pet Home";
+"email" = "Email";
+"password" = "Password";
+//"ErrorOfTheLogIn":""; //===================
+"signUp" = "Sign Up";
+"name" = "Name";
+"location" = "Location";
+"phoneNumber" = "Phone Number";
+"vertifyPassword" = "Vertify Password";
+//"ErrorOfTheSignUp" = ""; //===================
+"home" = "Home";
+"logOut" = "Log Out";
+"newPost" = "New Post";
+"yourPosts" = "Your Posts";
+"profile" = "Profile";
+"post" = "Post";
+"update" = "Update";
+"petName" = "Pet Name";
+"petAge" = "Pet Age";
+"petGender" = "Pet Gender";
+"petType" = "Pet Type";
+"descreption" = "Descreption";
+"creatNewPost" = "Creat New Post";
