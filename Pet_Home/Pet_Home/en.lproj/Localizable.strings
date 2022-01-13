@@ -1,16 +1,15 @@
-"logIn" = "Log In";
+"login" = "Login";
 "petHome" = "Pet Home";
 "email" = "Email";
 "password" = "Password";
-//"ErrorOfTheLogIn":""; //===================
+"signUpSlide" = "Sign Up >>";
 "signUp" = "Sign Up";
+"signInSlide" = "<< Sign In";
 "name" = "Name";
-"location" = "Location";
 "phoneNumber" = "Phone Number";
 "vertifyPassword" = "Vertify Password";
-//"ErrorOfTheSignUp" = ""; //===================
 "home" = "Home";
-"logOut" = "Log Out";
+"logout" = "Logout";
 "newPost" = "New Post";
 "yourPosts" = "Your Posts";
 "profile" = "Profile";
@@ -20,5 +19,15 @@
 "petAge" = "Pet Age";
 "petGender" = "Pet Gender";
 "petType" = "Pet Type";
-"descreption" = "Descreption";
+"descreption" = "     Descreption";
 "creatNewPost" = "Creat New Post";
+"pleaseEnterTheEmailAndThePassword" = "Please Enter The Email And Password";
+"errorBadEmail" = "Please enter The email in the correct forma";
+"errorThisUserIsNotFound" = "This Account is not found.. Creat a new account or enter the correct email";
+"errorPassword" = "Wrong Password";
+"errorPasswordCharacters" = "The password must be 6 characters long or more";
+"vertrficationPaswordError" = "Vertefecation passwords is not the same";
+"errorEmptySpace" = "Please fill the empty spaces";
+"updateProfile" = "Update Profile";
+"languages" = "Languages";
+"done" = "Done";

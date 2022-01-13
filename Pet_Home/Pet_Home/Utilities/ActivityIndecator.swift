@@ -1,5 +1,6 @@
 import UIKit
 
+let activityIndicator = UIActivityIndicatorView()
 struct Activity {
     static func showIndicator(parentView:UIView,childView activityIndicator:UIActivityIndicatorView) {
         parentView.addSubview(activityIndicator)

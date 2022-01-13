@@ -1,25 +1,33 @@
-"logIn" = "تسجيل الدخول";
+"login" = "تسجيل الدخول";
 "petHome" = "بت هوم";
 "email" = "الإيميل الشخصي";
 "password" = "كلمة السر";
-//"ErrorOfTheLogIn" = ""; //===================
-"signUp" = "إنشاء حساب جديد";
+"signUpSlide" = "<< حساب جديد";
+"signUp" = "حساب جديد";
+"signInSlide" = "تسجيل دخول >>";
 "name" = "الإسم";
-"location" = "الموقع";
 "phoneNumber" = "رقم الجوال";
 "vertifyPassword" = "تأكيد كلمة السر";
-//"ErrorOfTheSignUp" = ""; //===================
 "home" = "الصفحة الرئيسية";
-"logOut" = "تسجيل خروج";
-"newAdoptionPost" = "إعلان تبني جديد";
+"logout" = "تسجيل خروج";
+"newPost" = "إعلان جديد";
 "yourPosts" = "إعلاناتك";
 "profile" = "الملف الشخصي";
 "post" = "إعلان";
-"ubdate" = "تحديث";
+"update" = "تحديث";
 "petName" = "إسم الحيوان الأليف";
 "petAge" = "عمر الحيوان الأليف";
 "petGender" = "جنس الحيوان الأليف";
 "petType" = "نوع الحيوان الأليف";
-"descreption" = "معلومات عن الحيوان الأليف";
-"creatNewPost" = "إعلان جديد";
-
+"descreption" = "     معلومات إضافية";
+"creatNewPost" = "إضافة اعلان جديد";
+"pleaseEnterTheEmailAndThePassword" = "الرجاء كتابة الإيميل الشخصي و كلمة السر";
+"errorBadEmail" = "الرجاء إدخال الإيميل الشخصي بالشكل الصحيح";
+"errorThisUserIsNotFound" = "هذا الحساب غير موجود.. قم بتسجيل حساب جديد او ادخل الإيميل الشخصي بالشكل الصحيح";
+"errorPassword" = "كلمة السر خاطئة";
+"errorPasswordCharacters" = "كلمة السر يجب ان تحتوي على ٦ ارقام او اكثر";
+"vertrficationPaswordError" = "كلمة السر غير متطابقة";
+"errorEmptySpace" = "الرجاء إملء جميع الفراغات";
+"updateProfile" = "تحديث الملف الشخصي";
+"languages" = "اللغات";
+"done" = "تم";

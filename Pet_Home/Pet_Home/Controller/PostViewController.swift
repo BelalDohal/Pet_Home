@@ -3,25 +3,59 @@ import Firebase
 
 class PostViewController: UIViewController {
     let imagePickerController = UIImagePickerController()
-    let activityIndicator = UIActivityIndicatorView()
     var navigateFrom = ""
     @IBOutlet weak var postNavigationItem: UINavigationItem!
     @IBOutlet weak var petImageView: UIImageView! {
         didSet {
+            petImageView.layer.masksToBounds = true
+            petImageView.layer.cornerRadius = 15
+            petImageView.layer.borderWidth = 1
+            petImageView.layer.borderColor = UIColor.systemGreen.cgColor
             petImageView.isUserInteractionEnabled = true
             let tapGesture = UITapGestureRecognizer(target: self, action: #selector(selectImage))
             petImageView.addGestureRecognizer(tapGesture)
         }
     }
-    @IBOutlet weak var petNameTextField: UITextField!
-    @IBOutlet weak var petAgeTextField: UITextField!
-    @IBOutlet weak var petGenderTextField: UITextField!
-    @IBOutlet weak var petTypeTextField: UITextField!
+    @IBOutlet weak var petDescreptionStackView: UIStackView! {
+        didSet {
+            petDescreptionStackView.layer.masksToBounds = true
+            petDescreptionStackView.layer.cornerRadius = 15
+            petDescreptionStackView.layer.borderWidth = 1
+            petDescreptionStackView.layer.borderColor = UIColor.systemOrange.cgColor
+        }
+    }
+    @IBOutlet weak var petNameTextField: UITextField! {
+        didSet {
+            petNameTextField.fixTheTextField()
+        }
+    }
+    @IBOutlet weak var petAgeTextField: UITextField! {
+        didSet {
+            petAgeTextField.fixTheTextField()
+        }
+    }
+    @IBOutlet weak var petGenderTextField: UITextField! {
+        didSet {
+            petGenderTextField.fixTheTextField()
+        }
+    }
+    @IBOutlet weak var petTypeTextField: UITextField! {
+        didSet {
+            petTypeTextField.fixTheTextField()
+        }
+    }
+    @IBOutlet weak var petDescreptionLabel: UILabel! {
+        didSet {
+            petDescreptionLabel.text = "descreption".localiz
+        }
+    }
     @IBOutlet weak var petDescreptionTextField: UITextView!
     @IBOutlet weak var creatNewPostButton: UIButton! {
         didSet {
             creatNewPostButton.layer.cornerRadius = creatNewPostButton.frame.height/2
             creatNewPostButton.layer.masksToBounds = true
+            creatNewPostButton.layer.borderWidth = 1
+            creatNewPostButton.layer.borderColor = UIColor.systemGreen.cgColor
         }
     }
     var selectedAdoptionPost:AdoptionPost?
@@ -63,12 +97,12 @@ class PostViewController: UIViewController {
                             if self.navigateFrom == "Home" {
                                 if let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "HomeNavigationContoller") as? UINavigationController {
                                     vc.modalPresentationStyle = .fullScreen
-                                    Activity.removeIndicator(parentView: self.view, childView: self.activityIndicator)
+                                    Activity.removeIndicator(parentView: self.view, childView: activityIndicator)
                                     self.present(vc, animated: true, completion: nil)
                                 }else{
                                     let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "profileViewController") as UIViewController
                                     vc.modalPresentationStyle = .fullScreen
-                                    Activity.removeIndicator(parentView: self.view, childView: self.activityIndicator)
+                                    Activity.removeIndicator(parentView: self.view, childView: activityIndicator)
                                     self.present(vc, animated: true, completion: nil)
                                 }
                             }
@@ -136,7 +170,7 @@ class PostViewController: UIViewController {
                             if let error = error {
                                 print("FireStore Error",error.localizedDescription)
                             }
-                            Activity.removeIndicator(parentView: self.view, childView: self.activityIndicator)
+                            Activity.removeIndicator(parentView: self.view, childView: activityIndicator)
                             self.navigationController?.popViewController(animated: true)
                         }
                     }
