@@ -8,6 +8,12 @@ class HomeViewController: UIViewController {
     let navigatedFrom = "Home"
     var hiddenSideMenu = true
     // Side Menue
+    @IBOutlet weak var mainStackView: UIStackView! {
+        didSet {
+            //            let tapGesture = UITapGestureRecognizer(target: self, action: #selector(hideSideMenu))
+            //            mainStackView.addGestureRecognizer(tapGesture)
+        }
+    }
     @IBOutlet weak var sideMenuView: UIView! {
         didSet {
             sideMenuView.isHidden = true
@@ -69,8 +75,6 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         getCurrentUserData()
         getAdoptionPosts()
-//        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(hideSideMenu))
-//        self.view.addGestureRecognizer(tapGesture)
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let sendTo = segue.destination as? DetailsViewController
@@ -131,7 +135,7 @@ class HomeViewController: UIViewController {
     // Upload The collection View Main Function.
     func getAdoptionPosts() {
         let ref = Firestore.firestore()
-        ref.collection("posts").order(by: "updatedAt",descending: true).addSnapshotListener { snapshot, error in
+        ref.collection("posts").order(by: "createdAt",descending: true).addSnapshotListener { snapshot, error in
             if let error = error {
                 print("DB ERROR Posts",error.localizedDescription)
             }
@@ -158,6 +162,7 @@ class HomeViewController: UIViewController {
                                         self.adoptionPostTabelView.insertRows(at: [IndexPath(row: 0,section: 0)],with: .automatic)
                                     }
                                     self.adoptionPostTabelView.endUpdates()
+                                    self.adoptionPostTabelView.reloadData()
                                 }
                             }
                         }
@@ -168,6 +173,8 @@ class HomeViewController: UIViewController {
                             self.adoptionPostTabelView.deleteRows(at: [IndexPath(row: updateIndex,section: 0)], with: .left)
                             self.adoptionPostTabelView.insertRows(at: [IndexPath(row: updateIndex,section: 0)],with: .left)
                             self.adoptionPostTabelView.endUpdates()
+                            self.adoptionPostTabelView.reloadData()
+
                         }
                     case .removed:
                         let postId = diff.document.documentID
@@ -175,6 +182,8 @@ class HomeViewController: UIViewController {
                             self.adoptionPostTabelView.beginUpdates()
                             self.adoptionPostTabelView.deleteRows(at: [IndexPath(row: deleteIndex,section: 0)], with: .automatic)
                             self.adoptionPostTabelView.endUpdates()
+                            self.adoptionPostTabelView.reloadData()
+
                         }
                     }
                 }
@@ -211,12 +220,19 @@ class HomeViewController: UIViewController {
             }
         }
     }
+    @objc func goToProfile() {
+        performSegue(withIdentifier: "fromHomeToProfile", sender: self)
+        hideSideMenu()
+    }
+    @objc func goToPost() {
+        performSegue(withIdentifier: "fromHomeToPost", sender: self)
+        hideSideMenu()
+    }
 }
 extension HomeViewController:UITableViewDelegate,UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return adoptionPosts.count
     }
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "AdoptionPostsTabelViewCell", for: indexPath) as! AdoptionPostsTableViewCell
         return cell.configure(with: adoptionPosts[indexPath.row])
@@ -230,14 +246,6 @@ extension HomeViewController:UITableViewDelegate,UITableViewDataSource {
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return adoptionPostTabelView.frame.width
-    }
-    @objc func goToProfile() {
-        performSegue(withIdentifier: "fromHomeToProfile", sender: self)
-        hideSideMenu()
-    }
-    @objc func goToPost() {
-        performSegue(withIdentifier: "fromHomeToPost", sender: self)
-        hideSideMenu()
     }
 }
 extension HomeViewController:UISearchBarDelegate {
@@ -256,3 +264,4 @@ extension HomeViewController:UISearchBarDelegate {
         adoptionPostTabelView.reloadData()
     }
 }
+

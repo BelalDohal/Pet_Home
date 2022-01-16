@@ -35,8 +35,8 @@ class AdoptionPostsTableViewCell: UITableViewCell {
         petDescreptionLabel.text = adoptionPost.petDescreption
         return self
     }
-    // No Duplicate "AKA" More than ONE Download
     override func prepareForReuse() {
         petImageView.image = nil
+        userImageView.image = nil
     }
 }

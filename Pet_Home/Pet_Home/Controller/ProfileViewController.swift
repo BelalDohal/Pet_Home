@@ -7,6 +7,13 @@ class ProfileViewController: UIViewController {
     var selectedAdoptionPostImage: UIImage?
     let navigatedFrom = "Profile"
     var hideSettingsMenuSwitch = true
+    
+    @IBOutlet weak var mainStackViewToDismis: UIStackView! {
+        didSet {
+            //            let tapGesture = UITapGestureRecognizer(target: self, action: #selector(hideSettingMenu))
+            //            mainStackViewToDismis.addGestureRecognizer(tapGesture)
+        }
+    }
     @IBOutlet weak var userImageView: UIImageView! {
         didSet {
             userImageView.circolarImage()
@@ -80,8 +87,6 @@ class ProfileViewController: UIViewController {
         super.viewDidLoad()
         getCurrentUserData()
         getAdoptionPosts()
-//        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(hideSettingMenu))
-//        self.view.addGestureRecognizer(tapGesture)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -89,6 +94,9 @@ class ProfileViewController: UIViewController {
         sendTo?.selectedAdoptionPost = selectedAdoptionPost
         sendTo?.selectedAdoptionPostImage = selectedAdoptionPostImage
         sendTo?.navigatedFrom = navigatedFrom
+    }
+    @IBAction func dismesTheSettingView(_ sender: Any) {
+        hideSettingMenu()
     }
     @IBAction func settingPressed(_ sender: Any) {
         if hideSettingsMenuSwitch {

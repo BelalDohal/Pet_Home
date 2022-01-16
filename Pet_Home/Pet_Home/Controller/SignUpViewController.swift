@@ -15,6 +15,12 @@ class SignUpViewController: UIViewController {
             userImageView.addGestureRecognizer(tapGesture)
         }
     }
+    @IBOutlet weak var signUpView: UIStackView! {
+        didSet {
+            let tapGesture = UITapGestureRecognizer(target: self, action: #selector(closeKeyboard))
+            signUpView.addGestureRecognizer(tapGesture)
+        }
+    }
     @IBOutlet weak var signUpNavigationController: UINavigationItem!
     @IBOutlet weak var nameLabel: UILabel! {
         didSet {
@@ -126,8 +132,6 @@ class SignUpViewController: UIViewController {
         super.viewDidLoad()
         imagePickerController.delegate = self
         filter = countries
-//        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(closeKeyboard))
-//        self.view.addGestureRecognizer(tapGesture)
     }
     @IBAction func signUpPressed() {
         if let image = userImageView.image,
@@ -246,6 +250,7 @@ class SignUpViewController: UIViewController {
     }
     @objc func closeKeyboard() {
         self.view.endEditing(true)
+        hideLocationsTableView()
     }
 }
 extension SignUpViewController: UITableViewDelegate, UITableViewDataSource {
@@ -261,7 +266,6 @@ extension SignUpViewController: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("NOOOOOOOOOOOOOOOOOOOOOO!!!!!!!!!!!!!!!")
         locationTextField.text = filter[indexPath.row]
         hideLocationsTableView()
     }
@@ -273,31 +277,25 @@ extension SignUpViewController:UITextFieldDelegate {
     }
 }
 extension SignUpViewController: UIImagePickerControllerDelegate,UINavigationControllerDelegate {
-    
     @objc func selectImage() {
         showAlert()
     }
-    
     func showAlert() {
-        let alert = UIAlertController(title: "Chose Profile Picture", message: "Pick From ?", preferredStyle: .actionSheet)
-        let cameraAction = UIAlertAction(title: "Camera", style: .default) { Action in
+        let alert = UIAlertController(title: "Chose Profile Picture".localiz, message: "Pick From ?".localiz, preferredStyle: .actionSheet)
+        let cameraAction = UIAlertAction(title: "Camera".localiz, style: .default) { Action in
             self.getImage(from: .camera)
         }
-        
-        let galaryAction = UIAlertAction(title: "Photo Album", style: .default) { Action in
+        let galaryAction = UIAlertAction(title: "Photo Album".localiz, style: .default) { Action in
             self.getImage(from: .photoLibrary)
         }
-        
-        let dismessAction = UIAlertAction(title: "Cancle", style: .destructive) { Action in
+        let dismessAction = UIAlertAction(title: "Cancle".localiz, style: .destructive) { Action in
             self.dismiss(animated: true, completion: nil)
         }
-        
         alert.addAction(cameraAction)
         alert.addAction(galaryAction)
         alert.addAction(dismessAction)
         self.present(alert, animated: true, completion: nil)
     }
-    
     func getImage( from sourceType: UIImagePickerController.SourceType) {
         if UIImagePickerController.isSourceTypeAvailable(sourceType) {
             imagePickerController.sourceType = sourceType
@@ -305,13 +303,11 @@ extension SignUpViewController: UIImagePickerControllerDelegate,UINavigationCont
             self.present(imagePickerController, animated: true, completion: nil)
         }
     }
-    
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         guard let selectImage = info[UIImagePickerController.InfoKey.editedImage] as? UIImage else {return}
         userImageView.image = selectImage
         dismiss(animated: true, completion: nil)
     }
-    
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         picker.dismiss(animated: true, completion: nil)
     }

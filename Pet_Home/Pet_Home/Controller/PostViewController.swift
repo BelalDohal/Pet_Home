@@ -189,14 +189,14 @@ extension PostViewController: UIImagePickerControllerDelegate,UINavigationContro
         showAlert()
     }
     func showAlert() {
-        let alert = UIAlertController(title: "Chose Profile Picture", message: "Pick From ?", preferredStyle: .actionSheet)
-        let cameraAction = UIAlertAction(title: "Camera", style: .default) { Action in
+        let alert = UIAlertController(title: "Chose Profile Picture".localiz, message: "Pick From ?".localiz, preferredStyle: .actionSheet)
+        let cameraAction = UIAlertAction(title: "Camera".localiz, style: .default) { Action in
             self.getImage(from: .camera)
         }
-        let galaryAction = UIAlertAction(title: "Photo Album", style: .default) { Action in
+        let galaryAction = UIAlertAction(title: "Photo Album".localiz, style: .default) { Action in
             self.getImage(from: .photoLibrary)
         }
-        let dismessAction = UIAlertAction(title: "Cancle", style: .destructive) { Action in
+        let dismessAction = UIAlertAction(title: "Cancle".localiz, style: .destructive) { Action in
             self.dismiss(animated: true, completion: nil)
         }
         alert.addAction(cameraAction)
