@@ -7,7 +7,7 @@
 "signInSlide" = "تسجيل دخول >>";
 "name" = "الإسم";
 "phoneNumber" = "رقم الجوال";
-"vertifyPassword" = "تأكيد كلمة السر";
+"confirmPassword" = "تأكيد كلمة السر";
 "home" = "الصفحة الرئيسية";
 "logout" = "تسجيل خروج";
 "newPost" = "إعلان جديد";
@@ -19,7 +19,7 @@
 "petAge" = "عمر الحيوان الأليف";
 "petGender" = "جنس الحيوان الأليف";
 "petType" = "نوع الحيوان الأليف";
-"descreption" = "     معلومات إضافية";
+"descreption" = "معلومات إضافية";
 "creatNewPost" = "إضافة اعلان جديد";
 "pleaseEnterTheEmailAndThePassword" = "الرجاء كتابة الإيميل الشخصي و كلمة السر";
 "errorBadEmail" = "الرجاء إدخال الإيميل الشخصي بالشكل الصحيح";
@@ -31,3 +31,12 @@
 "updateProfile" = "تحديث الملف الشخصي";
 "languages" = "اللغات";
 "done" = "تم";
+"pleaseSellictTheCurrectLocation" = "الرجاء اختبار المدينة الصحيحة";
+"or" = "أو";
+"location" = "الموقع";
+"city" = "المدينة";
+"yourName" = "إسمك";
+"updatePost" = "تحديث الإعلان";
+"addPost" = "إعلان جديد";
+"updateThisPost" = "تحديث هذا الإعلان";
+"info" = "المزيد";

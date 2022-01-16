@@ -6,7 +6,7 @@ class ProfileViewController: UIViewController {
     var selectedAdoptionPost: AdoptionPost?
     var selectedAdoptionPostImage: UIImage?
     let navigatedFrom = "Profile"
-    var hideSettingsMenu = true
+    var hideSettingsMenuSwitch = true
     @IBOutlet weak var userImageView: UIImageView! {
         didSet {
             userImageView.circolarImage()
@@ -32,6 +32,11 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var logoutButton: UIButton! {
         didSet {
             logoutButton.setTitle(NSLocalizedString("logout", comment: ""), for: .normal)
+        }
+    }
+    @IBOutlet weak var currentUserSearchBar: UISearchBar! {
+        didSet {
+            currentUserSearchBar.delegate = self
         }
     }
     @IBOutlet weak var emailLabel: UILabel!
@@ -67,13 +72,18 @@ class ProfileViewController: UIViewController {
             userAdoptionPostsCollectionView.dataSource = self
         }
     }
+    @IBOutlet weak var userLocationAndCity: UILabel!
     @IBOutlet weak var profileNavigationItem: UINavigationItem!
     @IBOutlet weak var goToSettingsNavegationItem: UIBarButtonItem!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         getCurrentUserData()
         getAdoptionPosts()
+//        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(hideSettingMenu))
+//        self.view.addGestureRecognizer(tapGesture)
     }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let sendTo = segue.destination as? DetailsViewController
         sendTo?.selectedAdoptionPost = selectedAdoptionPost
@@ -81,7 +91,7 @@ class ProfileViewController: UIViewController {
         sendTo?.navigatedFrom = navigatedFrom
     }
     @IBAction func settingPressed(_ sender: Any) {
-        if hideSettingsMenu {
+        if hideSettingsMenuSwitch {
             UIView.animate(withDuration: 0.3) {
                 self.settingsMenuView.isHidden = false
                 self.settingsMenuHeightConstrant.constant = 130
@@ -89,7 +99,7 @@ class ProfileViewController: UIViewController {
                 self.settingsStack.alpha = 1
                 self.view.layoutIfNeeded()
             } completion: { status in
-                self.hideSettingsMenu = false
+                self.hideSettingsMenuSwitch = false
             }
         }else {
             UIView.animate(withDuration: 0.3) {
@@ -98,7 +108,7 @@ class ProfileViewController: UIViewController {
                 self.settingsStack.alpha = 0
                 self.view.layoutIfNeeded()
             } completion: { status in
-                self.hideSettingsMenu = true
+                self.hideSettingsMenuSwitch = true
                 self.settingsMenuView.isHidden = true
             }
         }
@@ -130,6 +140,7 @@ class ProfileViewController: UIViewController {
                                 self.profileNavigationItem.title = currentUserData.name
                                 self.emailLabel.text = currentUserData.email
                                 self.phoneNumberLabel.text = currentUserData.phoneNumber
+                                self.userLocationAndCity.text = "\(currentUserData.location) - \(currentUserData.city)"
                                 self.userImageView.loadImageUsingCache(with: currentUserData.imageUrl)
                             }
                         }else {
@@ -163,10 +174,15 @@ class ProfileViewController: UIViewController {
                                            let userData = userSnapshot.data(){
                                             let user = User(dict:userData)
                                             let post = AdoptionPost(dict:post,id:diff.document.documentID,user:user)
-                                            self.currentUserAdoptionPosts.insert(post, at: 0)
-                                            DispatchQueue.main.async {
-                                                self.userAdoptionPostsCollectionView.reloadData()
+                                            self.userAdoptionPostsCollectionView.beginUpdates()
+                                            if snapshot.documentChanges.count != 1 {
+                                                self.currentUserAdoptionPosts.append(post)
+                                                self.userAdoptionPostsCollectionView.insertRows(at: [IndexPath(row:self.currentUserAdoptionPosts.count - 1,section: 0)],with: .automatic)
+                                            }else {
+                                                self.currentUserAdoptionPosts.insert(post,at:0)
+                                                self.userAdoptionPostsCollectionView.insertRows(at: [IndexPath(row: 0,section: 0)],with: .automatic)
                                             }
+                                            self.userAdoptionPostsCollectionView.endUpdates()
                                         }
                                     }
                                 }
@@ -174,24 +190,34 @@ class ProfileViewController: UIViewController {
                         }
                     case .modified:
                         let postId = diff.document.documentID
-                        if let currentPost = self.currentUserAdoptionPosts.first(where: {$0.id == postId}),
-                           let updateIndex = self.currentUserAdoptionPosts.firstIndex(where: {$0.id == postId}){
-                            let newPost = AdoptionPost(dict:post, id: postId, user: currentPost.user)
-                            self.currentUserAdoptionPosts[updateIndex] = newPost
-                            DispatchQueue.main.async {
-                                self.userAdoptionPostsCollectionView.reloadData()
-                            }
+                        if let updateIndex = self.currentUserAdoptionPosts.firstIndex(where: {$0.id == postId}) {
+                            self.userAdoptionPostsCollectionView.beginUpdates()
+                            self.userAdoptionPostsCollectionView.deleteRows(at: [IndexPath(row: updateIndex,section: 0)], with: .left)
+                            self.userAdoptionPostsCollectionView.insertRows(at: [IndexPath(row: updateIndex,section: 0)],with: .left)
+                            self.userAdoptionPostsCollectionView.endUpdates()
                         }
                     case .removed:
                         let postId = diff.document.documentID
                         if let deleteIndex = self.currentUserAdoptionPosts.firstIndex(where: {$0.id == postId}){
-                            self.currentUserAdoptionPosts.remove(at: deleteIndex)
-                            DispatchQueue.main.async {
-                                self.userAdoptionPostsCollectionView.reloadData()
-                            }
+                            self.userAdoptionPostsCollectionView.beginUpdates()
+                            self.userAdoptionPostsCollectionView.deleteRows(at: [IndexPath(row: deleteIndex,section: 0)], with: .automatic)
+                            self.userAdoptionPostsCollectionView.endUpdates()
                         }
                     }
                 }
+            }
+        }
+    }
+    @objc func hideSettingMenu() {
+        if !hideSettingsMenuSwitch {
+            UIView.animate(withDuration: 0.3) {
+                self.settingsMenuHeightConstrant.constant = 0
+                self.settingsMenuWidthConstrant.constant = 0
+                self.settingsStack.alpha = 0
+                self.view.layoutIfNeeded()
+            } completion: { status in
+                self.hideSettingsMenuSwitch = true
+                self.settingsMenuView.isHidden = true
             }
         }
     }
@@ -214,5 +240,20 @@ extension ProfileViewController: UITableViewDelegate,UITableViewDataSource {
         tableView.deselectRow(at: indexPath, animated: false)
         performSegue(withIdentifier: "fromProfileToDetails", sender: self)
     }
-    
+}
+extension ProfileViewController:UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        var filtredData = [AdoptionPost]()
+        if searchText == "" {
+            getAdoptionPosts()
+        }else {
+            for i in currentUserAdoptionPosts {
+                if i.petType.lowercased().contains(searchText.lowercased()) || i.petType.lowercased().contains(searchText.lowercased()) || i.user.name.lowercased().contains(searchText.lowercased()) {
+                    filtredData.append(i)
+                }
+            }
+            currentUserAdoptionPosts = filtredData
+        }
+        userAdoptionPostsCollectionView.reloadData()
+    }
 }

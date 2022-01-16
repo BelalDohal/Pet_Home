@@ -27,7 +27,7 @@ class ChangeProfileViewController: UIViewController {
             updateUserInfoButton.layer.masksToBounds = true
             updateUserInfoButton.layer.cornerRadius = updateUserInfoButton.frame.height/2
             updateUserInfoButton.layer.borderWidth = 1
-            updateUserInfoButton.layer.borderColor = UIColor.systemGreen.cgColor
+            updateUserInfoButton.layer.borderColor = UIColor.systemOrange.cgColor
         }
     }
     @IBOutlet weak var updateUserInfoNavigationItem: UINavigationItem! {
@@ -73,6 +73,8 @@ class ChangeProfileViewController: UIViewController {
                                             "id": currentUserId,
                                             "name": name,
                                             "email": currentUserEmail,
+                                            "location":currentUserData.location,
+                                            "city":currentUserData.city,
                                             "phoneNumber":currentUserData.phoneNumber,
                                             "imageUrl":url.absoluteString,
                                         ]

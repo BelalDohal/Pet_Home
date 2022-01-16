@@ -11,13 +11,15 @@
 		DC79461227876DC2005E092A /* LanguageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC79461127876DC2005E092A /* LanguageViewController.swift */; };
 		DC79461427876DE2005E092A /* ChangeProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC79461327876DE2005E092A /* ChangeProfileViewController.swift */; };
 		DC7C8ED7278AB5E60005A6AE /* LanguagesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC7C8ED6278AB5E50005A6AE /* LanguagesTableViewCell.swift */; };
+		DC92919E27905822000DE076 /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = DC92919D27905822000DE076 /* IQKeyboardManagerSwift */; };
+		DC9291A027905A11000DE076 /* SignCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC92919F27905A11000DE076 /* SignCollectionViewCell.swift */; };
+		DC9291A2279377B8000DE076 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9291A1279377B8000DE076 /* SignUpViewController.swift */; };
+		DC9291A42793A154000DE076 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9291A32793A154000DE076 /* LoginViewController.swift */; };
 		DCA551602779D87100ECD1BC /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA5515F2779D87100ECD1BC /* PostViewController.swift */; };
 		DCA551622779D87D00ECD1BC /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA551612779D87D00ECD1BC /* HomeViewController.swift */; };
 		DCA551642779DCC600ECD1BC /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA551632779DCC600ECD1BC /* DetailsViewController.swift */; };
 		DCA5516A277AE6E900ECD1BC /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA55169277AE6E900ECD1BC /* User.swift */; };
 		DCA5516D277B3F8B00ECD1BC /* AdoptionPostsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA5516B277B3F8B00ECD1BC /* AdoptionPostsCollectionViewCell.swift */; };
-		DCA95971278D9BB000283070 /* LandingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA95970278D9BB000283070 /* LandingViewController.swift */; };
-		DCA95973278DB00300283070 /* SignCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA95972278DB00300283070 /* SignCollectionViewCell.swift */; };
 		DCD94C2827810B0300319912 /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCD94C2727810B0300319912 /* Localization.swift */; };
 		DCD94C2B27810BE300319912 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = DCD94C2D27810BE300319912 /* Localizable.strings */; };
 		DCF0BD63277623320038FAF9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF0BD62277623320038FAF9 /* AppDelegate.swift */; };
@@ -41,13 +43,14 @@
 		DC79461127876DC2005E092A /* LanguageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageViewController.swift; sourceTree = "<group>"; };
 		DC79461327876DE2005E092A /* ChangeProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeProfileViewController.swift; sourceTree = "<group>"; };
 		DC7C8ED6278AB5E50005A6AE /* LanguagesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguagesTableViewCell.swift; sourceTree = "<group>"; };
+		DC92919F27905A11000DE076 /* SignCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignCollectionViewCell.swift; sourceTree = "<group>"; };
+		DC9291A1279377B8000DE076 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		DC9291A32793A154000DE076 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		DCA5515F2779D87100ECD1BC /* PostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
 		DCA551612779D87D00ECD1BC /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		DCA551632779DCC600ECD1BC /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
 		DCA55169277AE6E900ECD1BC /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		DCA5516B277B3F8B00ECD1BC /* AdoptionPostsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdoptionPostsCollectionViewCell.swift; sourceTree = "<group>"; };
-		DCA95970278D9BB000283070 /* LandingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingViewController.swift; sourceTree = "<group>"; };
-		DCA95972278DB00300283070 /* SignCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignCollectionViewCell.swift; sourceTree = "<group>"; };
 		DCD94C2727810B0300319912 /* Localization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localization.swift; sourceTree = "<group>"; };
 		DCD94C2C27810BE300319912 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		DCD94C2E27810E7600319912 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/Main.strings; sourceTree = "<group>"; };
@@ -72,6 +75,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DC92919E27905822000DE076 /* IQKeyboardManagerSwift in Frameworks */,
 				DCF0BD80277640C40038FAF9 /* FirebaseDatabase in Frameworks */,
 				DCF0BD84277640C40038FAF9 /* FirebaseStorage in Frameworks */,
 				DCF0BD7E277640C40038FAF9 /* FirebaseAuth in Frameworks */,
@@ -103,8 +107,8 @@
 			children = (
 				DCF0BD8B2776684A0038FAF9 /* Utilities */,
 				DCF0BD76277633C10038FAF9 /* Model */,
-				DCF0BD79277633E50038FAF9 /* View */,
 				DCF0BD78277633D40038FAF9 /* Controller */,
+				DCF0BD79277633E50038FAF9 /* View */,
 				DCF0BD64277623320038FAF9 /* SceneDelegate.swift */,
 				DCF0BD62277623320038FAF9 /* AppDelegate.swift */,
 				DCD94C2D27810BE300319912 /* Localizable.strings */,
@@ -128,7 +132,8 @@
 		DCF0BD78277633D40038FAF9 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				DCA95970278D9BB000283070 /* LandingViewController.swift */,
+				DC9291A32793A154000DE076 /* LoginViewController.swift */,
+				DC9291A1279377B8000DE076 /* SignUpViewController.swift */,
 				DCA551612779D87D00ECD1BC /* HomeViewController.swift */,
 				DCA551632779DCC600ECD1BC /* DetailsViewController.swift */,
 				DCA5515F2779D87100ECD1BC /* PostViewController.swift */,
@@ -145,7 +150,7 @@
 				DCF0BD68277623320038FAF9 /* Main.storyboard */,
 				DCA5516B277B3F8B00ECD1BC /* AdoptionPostsCollectionViewCell.swift */,
 				DC7C8ED6278AB5E50005A6AE /* LanguagesTableViewCell.swift */,
-				DCA95972278DB00300283070 /* SignCollectionViewCell.swift */,
+				DC92919F27905A11000DE076 /* SignCollectionViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -182,6 +187,7 @@
 				DCF0BD7F277640C40038FAF9 /* FirebaseDatabase */,
 				DCF0BD81277640C40038FAF9 /* FirebaseFirestore */,
 				DCF0BD83277640C40038FAF9 /* FirebaseStorage */,
+				DC92919D27905822000DE076 /* IQKeyboardManagerSwift */,
 			);
 			productName = Pet_Home;
 			productReference = DCF0BD5F277623320038FAF9 /* Pet_Home.app */;
@@ -214,6 +220,7 @@
 			mainGroup = DCF0BD56277623320038FAF9;
 			packageReferences = (
 				DCF0BD7C277640C40038FAF9 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				DC92919C27905822000DE076 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
 			);
 			productRefGroup = DCF0BD60277623320038FAF9 /* Products */;
 			projectDirPath = "";
@@ -247,15 +254,16 @@
 				DCA551602779D87100ECD1BC /* PostViewController.swift in Sources */,
 				DCF0BD93277728250038FAF9 /* AdoptionPost.swift in Sources */,
 				DC79461427876DE2005E092A /* ChangeProfileViewController.swift in Sources */,
-				DCA95973278DB00300283070 /* SignCollectionViewCell.swift in Sources */,
+				DC9291A027905A11000DE076 /* SignCollectionViewCell.swift in Sources */,
 				DCF0BD8D277668650038FAF9 /* ImageView.swift in Sources */,
 				DC79461227876DC2005E092A /* LanguageViewController.swift in Sources */,
 				DCA551642779DCC600ECD1BC /* DetailsViewController.swift in Sources */,
+				DC9291A2279377B8000DE076 /* SignUpViewController.swift in Sources */,
+				DC9291A42793A154000DE076 /* LoginViewController.swift in Sources */,
 				DCF0BD63277623320038FAF9 /* AppDelegate.swift in Sources */,
 				DCA551622779D87D00ECD1BC /* HomeViewController.swift in Sources */,
 				DCA5516A277AE6E900ECD1BC /* User.swift in Sources */,
 				DCD94C2827810B0300319912 /* Localization.swift in Sources */,
-				DCA95971278D9BB000283070 /* LandingViewController.swift in Sources */,
 				DCF0BD912776A20F0038FAF9 /* ProfileViewController.swift in Sources */,
 				DCF0BD8F277668860038FAF9 /* ActivityIndecator.swift in Sources */,
 				DCA5516D277B3F8B00ECD1BC /* AdoptionPostsCollectionViewCell.swift in Sources */,
@@ -494,6 +502,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		DC92919C27905822000DE076 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/hackiftekhar/IQKeyboardManager.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 		DCF0BD7C277640C40038FAF9 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
@@ -505,6 +521,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		DC92919D27905822000DE076 /* IQKeyboardManagerSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DC92919C27905822000DE076 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */;
+			productName = IQKeyboardManagerSwift;
+		};
 		DCF0BD7D277640C40038FAF9 /* FirebaseAuth */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = DCF0BD7C277640C40038FAF9 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;

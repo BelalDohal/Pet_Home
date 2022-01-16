@@ -27,21 +27,25 @@ class PostViewController: UIViewController {
     @IBOutlet weak var petNameTextField: UITextField! {
         didSet {
             petNameTextField.fixTheTextField()
+            petNameTextField.placeholder = "petName".localiz
         }
     }
     @IBOutlet weak var petAgeTextField: UITextField! {
         didSet {
             petAgeTextField.fixTheTextField()
+            petAgeTextField.placeholder = "petAge".localiz
         }
     }
     @IBOutlet weak var petGenderTextField: UITextField! {
         didSet {
             petGenderTextField.fixTheTextField()
+            petGenderTextField.placeholder = "petGender".localiz
         }
     }
     @IBOutlet weak var petTypeTextField: UITextField! {
         didSet {
             petTypeTextField.fixTheTextField()
+            petTypeTextField.placeholder = "petType".localiz
         }
     }
     @IBOutlet weak var petDescreptionLabel: UILabel! {
@@ -55,7 +59,7 @@ class PostViewController: UIViewController {
             creatNewPostButton.layer.cornerRadius = creatNewPostButton.frame.height/2
             creatNewPostButton.layer.masksToBounds = true
             creatNewPostButton.layer.borderWidth = 1
-            creatNewPostButton.layer.borderColor = UIColor.systemGreen.cgColor
+            creatNewPostButton.layer.borderColor = UIColor.systemOrange.cgColor
         }
     }
     var selectedAdoptionPost:AdoptionPost?
@@ -65,19 +69,20 @@ class PostViewController: UIViewController {
         imagePickerController.delegate = self
         if let selectedAdoptionPost = selectedAdoptionPost,
            let selectedAdoptionPostImage = selectedAdoptionPostImage {
-            postNavigationItem.title = "Update"
+            postNavigationItem.title = "update".localiz
             petImageView.image = selectedAdoptionPostImage
             petNameTextField.text = selectedAdoptionPost.petName
             petAgeTextField.text = selectedAdoptionPost.petAge
             petGenderTextField.text = selectedAdoptionPost.petGender
             petTypeTextField.text = selectedAdoptionPost.petType
             petDescreptionTextField.text = selectedAdoptionPost.petDescreption
-            creatNewPostButton.setTitle("Update Post", for: .normal)
+            creatNewPostButton.setTitle(NSLocalizedString("updatePost", comment: ""), for: .normal)
             let deleteBarButton = UIBarButtonItem(image: UIImage(systemName: "trash.fill"), style: .plain, target: self, action: #selector(handleDelete))
             deleteBarButton.tintColor = .systemRed
             self.navigationItem.rightBarButtonItem = deleteBarButton
         }else {
-            creatNewPostButton.setTitle("Add Post", for: .normal)
+            postNavigationItem.title = "newPost".localiz
+            creatNewPostButton.setTitle(NSLocalizedString("addPost", comment: ""), for: .normal)
         }
     }
     // Delete

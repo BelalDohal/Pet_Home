@@ -5,8 +5,8 @@
         "color-space" : "display-p3",
         "components" : {
           "alpha" : "1.000",
-          "blue" : "0.746",
-          "green" : "0.923",
+          "blue" : "0.186",
+          "green" : "0.484",
           "red" : "1.000"
         }
       },
@@ -16,8 +16,5 @@
   "info" : {
     "author" : "xcode",
     "version" : 1
-  },
-  "properties" : {
-    "localizable" : true
   }
 }

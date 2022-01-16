@@ -17,7 +17,12 @@ class AdoptionPostsTableViewCell: UITableViewCell {
             petNameAndImageStackView.layer.borderColor = UIColor.systemOrange.cgColor
         }
     }
-    @IBOutlet weak var adoptionPostUIView: UIView!
+    @IBOutlet weak var adoptionPostUIView: UIView! {
+        didSet {
+            adoptionPostUIView.layer.cornerRadius = 15
+            adoptionPostUIView.layer.masksToBounds = true
+        }
+    }
     @IBOutlet weak var petNameLabel: UILabel!
     @IBOutlet weak var userNameLabel: UILabel!
     @IBOutlet weak var petDescreptionLabel: UILabel!

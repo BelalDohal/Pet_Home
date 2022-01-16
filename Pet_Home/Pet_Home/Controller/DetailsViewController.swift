@@ -17,14 +17,24 @@ class DetailsViewController: UIViewController {
             petImageView.layer.cornerRadius = 15
             petImageView.layer.masksToBounds = true
             petImageView.layer.borderWidth = 1
-            petImageView.layer.borderColor = UIColor.systemGreen.cgColor
+            petImageView.layer.borderColor = UIColor.systemOrange.cgColor
         }
     }
     @IBOutlet weak var petNameLabel: UILabel!
     @IBOutlet weak var petAgeLabel: UILabel!
     @IBOutlet weak var petGenderLabel: UILabel!
     @IBOutlet weak var petTypeLabel: UILabel!
-    @IBOutlet weak var petDescreptionLabel: UILabel!
+    @IBOutlet weak var petDescreptionLabel: UILabel! {
+        didSet {
+            petDescreptionLabel.layer.cornerRadius = 10
+            petDescreptionLabel.layer.masksToBounds = true
+        }
+    }
+    @IBOutlet weak var moreButton: UIButton! {
+        didSet {
+            moreButton.setTitle(NSLocalizedString("info", comment: ""), for: .normal)
+        }
+    }
     @IBOutlet weak var posterNumberLabel: UILabel!
     @IBOutlet weak var moreViewConstraint: NSLayoutConstraint!
     @IBOutlet weak var moreUIView: UIView! {
@@ -49,7 +59,6 @@ class DetailsViewController: UIViewController {
             userImageAndNumberStackView.layer.cornerRadius = userImageAndNumberStackView.frame.height/2
         }
     }
-    @IBOutlet weak var petImageViewHeightConstrant: NSLayoutConstraint! 
     var moreViewDisplayed = false
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -69,7 +78,7 @@ class DetailsViewController: UIViewController {
             if let currentUserId = currentUserId,
                currentUserId == posterId {
                 userImageAndNumberStackView.isUserInteractionEnabled = true
-                posterNumberLabel.text = "Update This Post"
+                posterNumberLabel.text = "updateThisPost".localiz
                 let tapGesture = UITapGestureRecognizer(target: self, action: #selector(goToPost))
                 userImageAndNumberStackView.addGestureRecognizer(tapGesture)
             }

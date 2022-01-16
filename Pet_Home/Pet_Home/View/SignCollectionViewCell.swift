@@ -51,6 +51,7 @@ class SignCollectionViewCell: UICollectionViewCell {
         didSet {
             passwordTextField.fixTheTextField()
             passwordTextField.delegate = self
+            passwordTextField.isSecureTextEntry = true
         }
     }
     
@@ -64,9 +65,9 @@ class SignCollectionViewCell: UICollectionViewCell {
         didSet {
             confirmPasswordTextField.fixTheTextField()
             confirmPasswordTextField.delegate = self
+            confirmPasswordTextField.isSecureTextEntry = true
         }
     }
-    
     // Buttons
     @IBOutlet weak var scrolingButton: UIButton!
     @IBOutlet weak var signButton: UIButton!

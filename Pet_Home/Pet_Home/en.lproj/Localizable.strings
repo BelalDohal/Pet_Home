@@ -7,7 +7,7 @@
 "signInSlide" = "<< Sign In";
 "name" = "Name";
 "phoneNumber" = "Phone Number";
-"vertifyPassword" = "Vertify Password";
+"confirmPassword" = "Confirm Password";
 "home" = "Home";
 "logout" = "Logout";
 "newPost" = "New Post";
@@ -19,7 +19,7 @@
 "petAge" = "Pet Age";
 "petGender" = "Pet Gender";
 "petType" = "Pet Type";
-"descreption" = "     Descreption";
+"descreption" = "Descreption";
 "creatNewPost" = "Creat New Post";
 "pleaseEnterTheEmailAndThePassword" = "Please Enter The Email And Password";
 "errorBadEmail" = "Please enter The email in the correct forma";
@@ -31,3 +31,12 @@
 "updateProfile" = "Update Profile";
 "languages" = "Languages";
 "done" = "Done";
+"pleaseSellictTheCurrectLocation" = "Please sellict the currect location";
+"or" = "Or";
+"location" = "Location";
+"city" = "City";
+"yourName" = "Your Name";
+"updatePost" = "Update Post";
+"addPost" = "Add Post";
+"updateThisPost" = "Update this post";
+"info" = "Info";

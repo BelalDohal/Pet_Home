@@ -6,13 +6,15 @@ class HomeViewController: UIViewController {
     var selectedAdoptionPost:AdoptionPost?
     var selectedAdoptionPostImage:UIImage?
     let navigatedFrom = "Home"
-    var hideSideMenu = true
+    var hiddenSideMenu = true
     // Side Menue
     @IBOutlet weak var sideMenuView: UIView! {
         didSet {
             sideMenuView.isHidden = true
             sideMenuView.layer.masksToBounds = true
             sideMenuView.layer.cornerRadius = 10
+            sideMenuView.layer.borderColor = UIColor.systemGray2.cgColor
+            sideMenuView.layer.borderWidth = 1
         }
     }
     @IBOutlet weak var userImageAndNameView: UIView!
@@ -29,6 +31,11 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var logOutButton: UIButton! {
         didSet {
             logOutButton.setTitle(NSLocalizedString("logout", comment: ""), for: .normal)
+        }
+    }
+    @IBOutlet weak var homeSerachBar: UISearchBar! {
+        didSet {
+            homeSerachBar.delegate = self
         }
     }
     @IBOutlet weak var leftSideMenuConstraint: NSLayoutConstraint!
@@ -62,6 +69,8 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         getCurrentUserData()
         getAdoptionPosts()
+//        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(hideSideMenu))
+//        self.view.addGestureRecognizer(tapGesture)
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let sendTo = segue.destination as? DetailsViewController
@@ -86,22 +95,13 @@ class HomeViewController: UIViewController {
             print("ERROR in signout",error.localizedDescription)
         }
     }
-//    @IBAction func hideMenuTapGesture(_ sender: Any) {
-//        if leftSideMenuConstraint.constant >= -10 {
-//            UIView.animate(withDuration: 0.2) {
-//                self.leftSideMenuConstraint.constant = -270
-//                self.view.layoutIfNeeded()
-//            } completion: { status in
-//                self.hideSideMenu = true
-//                self.sideMenuView.isHidden = true
-//            }
-//        }
-//    }
     @IBAction func profileSideMenuPressed(_ sender: Any) {
         goToProfile()
+        hideSideMenu()
     }
     @IBAction func newPostSideMenuPressed(_ sender: Any) {
         goToPost()
+        hideSideMenu()
     }
     // Upload The Current User Data Function.
     func getCurrentUserData() {
@@ -149,30 +149,32 @@ class HomeViewController: UIViewController {
                                    let userData = userSnapshot.data(){
                                     let user = User(dict:userData)
                                     let post = AdoptionPost(dict:post,id:diff.document.documentID,user:user)
-                                    self.adoptionPosts.insert(post, at: 0)
-                                    DispatchQueue.main.async {
-                                        self.adoptionPostTabelView.reloadData()
+                                    self.adoptionPostTabelView.beginUpdates()
+                                    if snapshot.documentChanges.count != 1 {
+                                        self.adoptionPosts.append(post)
+                                        self.adoptionPostTabelView.insertRows(at: [IndexPath(row:self.adoptionPosts.count - 1,section: 0)],with: .automatic)
+                                    }else {
+                                        self.adoptionPosts.insert(post,at:0)
+                                        self.adoptionPostTabelView.insertRows(at: [IndexPath(row: 0,section: 0)],with: .automatic)
                                     }
+                                    self.adoptionPostTabelView.endUpdates()
                                 }
                             }
                         }
                     case .modified:
                         let postId = diff.document.documentID
-                        if let currentPost = self.adoptionPosts.first(where: {$0.id == postId}),
-                           let updateIndex = self.adoptionPosts.firstIndex(where: {$0.id == postId}){
-                            let newPost = AdoptionPost(dict:post, id: postId, user: currentPost.user)
-                            self.adoptionPosts[updateIndex] = newPost
-                            DispatchQueue.main.async {
-                                self.adoptionPostTabelView.reloadData()
-                            }
+                        if let updateIndex = self.adoptionPosts.firstIndex(where: {$0.id == postId}) {
+                            self.adoptionPostTabelView.beginUpdates()
+                            self.adoptionPostTabelView.deleteRows(at: [IndexPath(row: updateIndex,section: 0)], with: .left)
+                            self.adoptionPostTabelView.insertRows(at: [IndexPath(row: updateIndex,section: 0)],with: .left)
+                            self.adoptionPostTabelView.endUpdates()
                         }
                     case .removed:
                         let postId = diff.document.documentID
                         if let deleteIndex = self.adoptionPosts.firstIndex(where: {$0.id == postId}){
-                            self.adoptionPosts.remove(at: deleteIndex)
-                            DispatchQueue.main.async {
-                                self.adoptionPostTabelView.reloadData()
-                            }
+                            self.adoptionPostTabelView.beginUpdates()
+                            self.adoptionPostTabelView.deleteRows(at: [IndexPath(row: deleteIndex,section: 0)], with: .automatic)
+                            self.adoptionPostTabelView.endUpdates()
                         }
                     }
                 }
@@ -180,20 +182,31 @@ class HomeViewController: UIViewController {
         }
     }
     func hideAndShowSideMenu() {
-        if hideSideMenu {
+        if hiddenSideMenu {
             UIView.animate(withDuration: 0.3) {
                 self.sideMenuView.isHidden = false
                 self.leftSideMenuConstraint.constant = -10
                 self.view.layoutIfNeeded()
             } completion: { status in
-                self.hideSideMenu = false
+                self.hiddenSideMenu = false
             }
         }else {
             UIView.animate(withDuration: 0.3) {
                 self.leftSideMenuConstraint.constant = -270
                 self.view.layoutIfNeeded()
             } completion: { status in
-                self.hideSideMenu = true
+                self.hiddenSideMenu = true
+                self.sideMenuView.isHidden = true
+            }
+        }
+    }
+    @objc func hideSideMenu() {
+        if !hiddenSideMenu {
+            UIView.animate(withDuration: 0.3) {
+                self.leftSideMenuConstraint.constant = -270
+                self.view.layoutIfNeeded()
+            } completion: { status in
+                self.hiddenSideMenu = true
                 self.sideMenuView.isHidden = true
             }
         }
@@ -220,34 +233,26 @@ extension HomeViewController:UITableViewDelegate,UITableViewDataSource {
     }
     @objc func goToProfile() {
         performSegue(withIdentifier: "fromHomeToProfile", sender: self)
+        hideSideMenu()
     }
     @objc func goToPost() {
         performSegue(withIdentifier: "fromHomeToPost", sender: self)
+        hideSideMenu()
     }
 }
-
-/*
- ================
- MARK: Add _
- self.postsTableView.beginUpdates()
- if snapshot.documentChanges.count != 1 {
-     self.posts.append(post)
-     self.postsTableView.insertRows(at: [IndexPath(row:self.posts.count - 1,section: 0)],with: .automatic)
- }else {
-     self.posts.insert(post,at:0)
-     self.postsTableView.insertRows(at: [IndexPath(row: 0,section: 0)],with: .automatic)
- }
- self.postsTableView.endUpdates()
- ================
- MARK: Modify _
- self.postsTableView.beginUpdates()
- self.postsTableView.deleteRows(at: [IndexPath(row: updateIndex,section: 0)], with: .left)
- self.postsTableView.insertRows(at: [IndexPath(row: updateIndex,section: 0)],with: .left)
- self.postsTableView.endUpdates()
- ================
- MARK: Delete _
- self.postsTableView.beginUpdates()
- self.postsTableView.deleteRows(at: [IndexPath(row: deleteIndex,section: 0)], with: .automatic)
- self.postsTableView.endUpdates()
- ================
- */
+extension HomeViewController:UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        var filtredData = [AdoptionPost]()
+        if searchText == "" {
+            getAdoptionPosts()
+        }else {
+            for i in adoptionPosts {
+                if i.petType.lowercased().contains(searchText.lowercased()) || i.petType.lowercased().contains(searchText.lowercased()) || i.user.name.lowercased().contains(searchText.lowercased()) {
+                    filtredData.append(i)
+                }
+            }
+            adoptionPosts = filtredData
+        }
+        adoptionPostTabelView.reloadData()
+    }
+}
