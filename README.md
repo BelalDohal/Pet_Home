@@ -4,8 +4,8 @@
 - App for homeless pets and adoptions pets
 
 ## Demo
-
-
+![](LightMode.gif)
+![](DarkMode.gif)
 ## User Stories
 - user can login and sign up.
 - user can post a new adoptions post and other users posts.
@@ -19,7 +19,6 @@
 
 ## ERD
 ![](ERD.png)
-
 ## Wireframe
 ![](signwireframe.png)
 ![](homeandtherest.png)
