@@ -9,7 +9,7 @@ class DetailsViewController: UIViewController {
         didSet {
             posterImageView.circolarImage()
             posterImageView.layer.borderWidth = 3
-            posterImageView.layer.borderColor = UIColor.systemGreen.cgColor
+            posterImageView.layer.borderColor = UIColor.systemOrange.cgColor
         }
     }
     @IBOutlet weak var petImageView: UIImageView! {
@@ -24,10 +24,13 @@ class DetailsViewController: UIViewController {
     @IBOutlet weak var petAgeLabel: UILabel!
     @IBOutlet weak var petGenderLabel: UILabel!
     @IBOutlet weak var petTypeLabel: UILabel!
-    @IBOutlet weak var petDescreptionLabel: UILabel! {
+    @IBOutlet weak var petDescreptionTextView: UITextView! {
         didSet {
-            petDescreptionLabel.layer.cornerRadius = 10
-            petDescreptionLabel.layer.masksToBounds = true
+            petDescreptionTextView.delegate = self
+            petDescreptionTextView.layer.cornerRadius = 10
+            petDescreptionTextView.layer.masksToBounds = true
+            petDescreptionTextView.layer.borderWidth = 1
+            petDescreptionTextView.layer.borderColor = UIColor.black.cgColor
         }
     }
     @IBOutlet weak var moreButton: UIButton! {
@@ -57,6 +60,8 @@ class DetailsViewController: UIViewController {
         didSet {
             userImageAndNumberStackView.layer.masksToBounds = true
             userImageAndNumberStackView.layer.cornerRadius = userImageAndNumberStackView.frame.height/2
+            userImageAndNumberStackView.layer.borderWidth = 1
+            userImageAndNumberStackView.layer.borderColor = UIColor.systemOrange.cgColor
         }
     }
     var moreViewDisplayed = false
@@ -73,7 +78,7 @@ class DetailsViewController: UIViewController {
             petGenderLabel.text = selectedAdoptionPost.petGender
             petTypeLabel.text = selectedAdoptionPost.petType
             posterNumberLabel.text = selectedAdoptionPost.user.phoneNumber
-            petDescreptionLabel.text = selectedAdoptionPost.petDescreption
+            petDescreptionTextView.text = selectedAdoptionPost.petDescreption
             let currentUserId = Auth.auth().currentUser?.uid
             if let currentUserId = currentUserId,
                currentUserId == posterId {
@@ -93,7 +98,6 @@ class DetailsViewController: UIViewController {
     @IBAction func morePressed(_ sender: Any) {
         if moreViewDisplayed == false {
             UIView.animate(withDuration: 0.3) {
-                self.petDescreptionLabel.numberOfLines = 3
                 self.moreUIView.isHidden = false
                 self.moreUIView.alpha = 1
                 self.moreViewConstraint.constant = 100
@@ -109,12 +113,9 @@ class DetailsViewController: UIViewController {
                 self.view.layoutIfNeeded()
             } completion: { status in
                 self.moreViewDisplayed = false
-                self.petDescreptionLabel.numberOfLines = 0
             }
         }
     }
-}
-extension DetailsViewController {
     @objc func goToPost() {
         performSegue(withIdentifier: "fromDetailsToPost", sender: self)
     }
@@ -122,6 +123,8 @@ extension DetailsViewController {
         performSegue(withIdentifier: "fromHomeToProfile", sender: self)
     }
 }
-
-/*
- */
+extension DetailsViewController:UITextViewDelegate {
+    func textViewShouldBeginEditing(_ textView: UITextView) -> Bool {
+        return false
+    }
+}

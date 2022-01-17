@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DC2042B927944B3900EBAAA6 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DC2042B827944B3900EBAAA6 /* GoogleService-Info.plist */; };
 		DC3A73CE278BA6C000D07F9D /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC3A73CD278BA6C000D07F9D /* TextField.swift */; };
 		DC79461227876DC2005E092A /* LanguageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC79461127876DC2005E092A /* LanguageViewController.swift */; };
 		DC79461427876DE2005E092A /* ChangeProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC79461327876DE2005E092A /* ChangeProfileViewController.swift */; };
@@ -27,7 +28,6 @@
 		DCF0BD6A277623320038FAF9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DCF0BD68277623320038FAF9 /* Main.storyboard */; };
 		DCF0BD6C277623360038FAF9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DCF0BD6B277623360038FAF9 /* Assets.xcassets */; };
 		DCF0BD6F277623360038FAF9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DCF0BD6D277623360038FAF9 /* LaunchScreen.storyboard */; };
-		DCF0BD7B277634A80038FAF9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DCF0BD7A277634A80038FAF9 /* GoogleService-Info.plist */; };
 		DCF0BD7E277640C40038FAF9 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = DCF0BD7D277640C40038FAF9 /* FirebaseAuth */; };
 		DCF0BD80277640C40038FAF9 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = DCF0BD7F277640C40038FAF9 /* FirebaseDatabase */; };
 		DCF0BD82277640C40038FAF9 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = DCF0BD81277640C40038FAF9 /* FirebaseFirestore */; };
@@ -39,6 +39,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		DC2042B827944B3900EBAAA6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/Pet Revelotion/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		DC3A73CD278BA6C000D07F9D /* TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
 		DC79461127876DC2005E092A /* LanguageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageViewController.swift; sourceTree = "<group>"; };
 		DC79461327876DE2005E092A /* ChangeProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeProfileViewController.swift; sourceTree = "<group>"; };
@@ -63,7 +64,6 @@
 		DCF0BD6B277623360038FAF9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DCF0BD6E277623360038FAF9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DCF0BD70277623360038FAF9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		DCF0BD7A277634A80038FAF9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		DCF0BD8C277668650038FAF9 /* ImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageView.swift; sourceTree = "<group>"; };
 		DCF0BD8E277668860038FAF9 /* ActivityIndecator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndecator.swift; sourceTree = "<group>"; };
 		DCF0BD902776A20F0038FAF9 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
@@ -115,7 +115,7 @@
 				DCF0BD6B277623360038FAF9 /* Assets.xcassets */,
 				DCF0BD6D277623360038FAF9 /* LaunchScreen.storyboard */,
 				DCF0BD70277623360038FAF9 /* Info.plist */,
-				DCF0BD7A277634A80038FAF9 /* GoogleService-Info.plist */,
+				DC2042B827944B3900EBAAA6 /* GoogleService-Info.plist */,
 			);
 			path = Pet_Home;
 			sourceTree = "<group>";
@@ -238,7 +238,7 @@
 			files = (
 				DCD94C2B27810BE300319912 /* Localizable.strings in Resources */,
 				DCF0BD6F277623360038FAF9 /* LaunchScreen.storyboard in Resources */,
-				DCF0BD7B277634A80038FAF9 /* GoogleService-Info.plist in Resources */,
+				DC2042B927944B3900EBAAA6 /* GoogleService-Info.plist in Resources */,
 				DCF0BD6C277623360038FAF9 /* Assets.xcassets in Resources */,
 				DCF0BD6A277623320038FAF9 /* Main.storyboard in Resources */,
 			);
@@ -433,6 +433,8 @@
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Pet_Home/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Please allow access to take profile picture";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "Please allow access to select photo from your galary";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -443,7 +445,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "Belal.Pet-Home";
+				PRODUCT_BUNDLE_IDENTIFIER = "Belal.Pet-Home1";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -460,6 +462,8 @@
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Pet_Home/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Please allow access to take profile picture";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "Please allow access to select photo from your galary";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -470,7 +474,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "Belal.Pet-Home";
+				PRODUCT_BUNDLE_IDENTIFIER = "Belal.Pet-Home1";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;

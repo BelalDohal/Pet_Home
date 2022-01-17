@@ -95,7 +95,6 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        UIView.appearance().semanticContentAttribute = .forceRightToLeft
     }
     @IBAction func sellectedLanguage(_ sender: UISegmentedControl) {
         if let language = sender.titleForSegment(at: sender.selectedSegmentIndex) {

@@ -162,7 +162,6 @@ class HomeViewController: UIViewController {
                                         self.adoptionPostTabelView.insertRows(at: [IndexPath(row: 0,section: 0)],with: .automatic)
                                     }
                                     self.adoptionPostTabelView.endUpdates()
-                                    self.adoptionPostTabelView.reloadData()
                                 }
                             }
                         }
@@ -173,8 +172,6 @@ class HomeViewController: UIViewController {
                             self.adoptionPostTabelView.deleteRows(at: [IndexPath(row: updateIndex,section: 0)], with: .left)
                             self.adoptionPostTabelView.insertRows(at: [IndexPath(row: updateIndex,section: 0)],with: .left)
                             self.adoptionPostTabelView.endUpdates()
-                            self.adoptionPostTabelView.reloadData()
-
                         }
                     case .removed:
                         let postId = diff.document.documentID
@@ -182,13 +179,12 @@ class HomeViewController: UIViewController {
                             self.adoptionPostTabelView.beginUpdates()
                             self.adoptionPostTabelView.deleteRows(at: [IndexPath(row: deleteIndex,section: 0)], with: .automatic)
                             self.adoptionPostTabelView.endUpdates()
-                            self.adoptionPostTabelView.reloadData()
-
                         }
                     }
                 }
             }
         }
+        adoptionPostTabelView.reloadData()
     }
     func hideAndShowSideMenu() {
         if hiddenSideMenu {

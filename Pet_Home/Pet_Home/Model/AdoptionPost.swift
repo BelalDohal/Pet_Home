@@ -8,6 +8,10 @@ struct AdoptionPost {
     var petAge = ""
     var petGender = ""
     var petType = ""
+    var petColor = ""
+    var petSize = ""
+    var houseTrained = ""
+    var health = ""
     var petDescreption = ""
     var user: User
     var createdAt: Timestamp?
@@ -16,6 +20,10 @@ struct AdoptionPost {
            let petAge = dict["petAge"] as? String,
            let petGender = dict["petGender"] as? String,
            let petType = dict["petType"] as? String,
+           let petColor = dict["petColor"] as? String,
+           let petSize = dict["petSize"] as? String,
+           let houseTrained = dict["houseTrained"] as? String,
+           let health = dict["health"] as? String,
            let petDescreption = dict["petDescreption"] as? String,
            let imageUrl = dict["imageUrl"] as? String,
            let createdAt = dict["createdAt"] as? Timestamp {
@@ -23,6 +31,10 @@ struct AdoptionPost {
             self.petAge = petAge
             self.petGender = petGender
             self.petType = petType
+            self.petColor = petColor
+            self.petSize = petSize
+            self.houseTrained = houseTrained
+            self.health = health
             self.petDescreption = petDescreption
             self.imageUrl = imageUrl
             self.createdAt = createdAt
@@ -31,5 +43,3 @@ struct AdoptionPost {
         self.user = user
     }
 }
-/*
- */

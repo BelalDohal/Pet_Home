@@ -1,4 +1,5 @@
 # Pet_Home
+
 ## Descreption
 - App for homeless pets and adoptions pets
 
@@ -17,7 +18,10 @@
 - IQKeyboardManagerSwift
 
 ## ERD
+![](ERD.png)
 
 ## Wireframe
-
-
+![](signwireframe.png)
+![](homeandtherest.png)
+![](homesidemenu.png)
+![](settingsmenu.png)
