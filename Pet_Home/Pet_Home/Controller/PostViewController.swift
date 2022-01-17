@@ -5,6 +5,16 @@ class PostViewController: UIViewController {
     let imagePickerController = UIImagePickerController()
     var navigateFrom = ""
     @IBOutlet weak var postNavigationItem: UINavigationItem!
+    // Labels
+    @IBOutlet weak var petNameLabel: UILabel!
+    @IBOutlet weak var petTypeLabel: UILabel!
+    @IBOutlet weak var petColorLabel: UILabel!
+    @IBOutlet weak var petSizeLabel: UILabel!
+    @IBOutlet weak var betAgeLabel: UILabel!
+    @IBOutlet weak var petGenderLabel: UILabel!
+    @IBOutlet weak var trainedLabel: UILabel!
+    @IBOutlet weak var vaccinatedLabel: UILabel!
+    
     @IBOutlet weak var petImageView: UIImageView! {
         didSet {
             petImageView.layer.masksToBounds = true
@@ -22,6 +32,36 @@ class PostViewController: UIViewController {
             petDescreptionStackView.layer.cornerRadius = 15
             petDescreptionStackView.layer.borderWidth = 1
             petDescreptionStackView.layer.borderColor = UIColor.systemOrange.cgColor
+        }
+    }
+    // Switches
+    @IBOutlet weak var trainedSwitch: UISwitch!
+    var trained: (UISwitch) -> String = { trainedSwitch in
+        if trainedSwitch.isOn {
+            return "Traned"
+        }else {
+            return ""
+        }
+    }
+    @IBOutlet weak var vaccinatrdSwitch: UISwitch!
+    var vaccinated: (UISwitch) -> String = { vaccinat in
+        if vaccinat.isOn {
+            return "Vaccinated"
+        }else {
+            return "Unvaccinated"
+        }
+    }
+    
+    @IBOutlet weak var sizeTextField: UITextField! {
+        didSet {
+            sizeTextField.fixTheTextField()
+            sizeTextField.placeholder = "size".localiz
+        }
+    }
+    @IBOutlet weak var colorTextField: UITextField! {
+        didSet {
+            colorTextField.fixTheTextField()
+            colorTextField.placeholder = "color".localiz
         }
     }
     @IBOutlet weak var petNameTextField: UITextField! {
@@ -75,6 +115,18 @@ class PostViewController: UIViewController {
             petAgeTextField.text = selectedAdoptionPost.petAge
             petGenderTextField.text = selectedAdoptionPost.petGender
             petTypeTextField.text = selectedAdoptionPost.petType
+            colorTextField.text = selectedAdoptionPost.petColor
+            sizeTextField.text = selectedAdoptionPost.petSize
+            if selectedAdoptionPost.health == "Vaccinated" {
+                vaccinatrdSwitch.isOn = true
+            }else {
+                vaccinatrdSwitch.isOn = false
+            }
+            if selectedAdoptionPost.houseTrained == "" {
+                trainedSwitch.isOn = false
+            }else {
+                trainedSwitch.isOn = true
+            }
             petDescreptionTextField.text = selectedAdoptionPost.petDescreption
             creatNewPostButton.setTitle(NSLocalizedString("updatePost", comment: ""), for: .normal)
             let deleteBarButton = UIBarButtonItem(image: UIImage(systemName: "trash.fill"), style: .plain, target: self, action: #selector(handleDelete))
@@ -126,6 +178,8 @@ class PostViewController: UIViewController {
            let petGender = petGenderTextField.text,
            let petType = petTypeTextField.text,
            let petDescreption = petDescreptionTextField.text,
+           let petSize = sizeTextField.text,
+           let petColor = colorTextField.text,
            let currentUser = Auth.auth().currentUser {
             Activity.showIndicator(parentView: self.view, childView: activityIndicator)
             var postId = ""
@@ -155,8 +209,8 @@ class PostViewController: UIViewController {
                                 "petType":petType,
                                 "petColor":petColor,
                                 "petSize":petSize,
-                                "houseTrained":houseTrained,
-                                "health":health,
+                                "houseTrained":self.trained(self.trainedSwitch),
+                                "health":self.vaccinated(self.vaccinatrdSwitch),
                                 "petDescreption":petDescreption,
                                 "imageUrl":url.absoluteString,
                                 "createdAt":selectedAdoptionPost.createdAt ?? FieldValue.serverTimestamp(),
@@ -169,6 +223,10 @@ class PostViewController: UIViewController {
                                 "petAge":petAge,
                                 "petGender":petGender,
                                 "petType":petType,
+                                "petColor":petColor,
+                                "petSize":petSize,
+                                "houseTrained":self.trained(self.trainedSwitch),
+                                "health":self.vaccinated(self.vaccinatrdSwitch),
                                 "petDescreption":petDescreption,
                                 "imageUrl":url.absoluteString,
                                 "createdAt":FieldValue.serverTimestamp(),

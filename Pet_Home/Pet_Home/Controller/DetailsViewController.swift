@@ -74,9 +74,9 @@ class DetailsViewController: UIViewController {
             posterImageView.loadImageUsingCache(with: selectedAdoptionPost.user.imageUrl)
             petImageView.image = selectedAdoptionPostImage
             petNameLabel.text = selectedAdoptionPost.petName
-            petAgeLabel.text = selectedAdoptionPost.petAge
-            petGenderLabel.text = selectedAdoptionPost.petGender
-            petTypeLabel.text = selectedAdoptionPost.petType
+            petAgeLabel.text = "\(selectedAdoptionPost.health) . \(selectedAdoptionPost.houseTrained)"
+            petGenderLabel.text = "\(selectedAdoptionPost.petType) . \(selectedAdoptionPost.petGender) . \(selectedAdoptionPost.petAge)"
+            petTypeLabel.text = "\(selectedAdoptionPost.petColor) . \(selectedAdoptionPost.petSize)"
             posterNumberLabel.text = selectedAdoptionPost.user.phoneNumber
             petDescreptionTextView.text = selectedAdoptionPost.petDescreption
             let currentUserId = Auth.auth().currentUser?.uid
