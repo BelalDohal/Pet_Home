@@ -9,12 +9,11 @@ class LoginViewController: UIViewController {
                 switch language {
                 case "ar":
                     LanguageSegmentControl.selectedSegmentIndex = 0
-                    
                 case "en":
                     LanguageSegmentControl.selectedSegmentIndex = 1
                 default:
                     let localLanguage =  Locale.current.languageCode
-                    if localLanguage == "ar" {
+                    if localLanguage == "en" {
                         LanguageSegmentControl.selectedSegmentIndex = 0
                     }else {
                         LanguageSegmentControl.selectedSegmentIndex = 1
@@ -22,7 +21,7 @@ class LoginViewController: UIViewController {
                 }
             }else {
                 let localLanguage =  Locale.current.languageCode
-                if localLanguage == "ar" {
+                if localLanguage == "en" {
                     LanguageSegmentControl.selectedSegmentIndex = 0
                 }else {
                     LanguageSegmentControl.selectedSegmentIndex = 1
@@ -30,7 +29,6 @@ class LoginViewController: UIViewController {
             }
         }
     }
-    
     @IBOutlet weak var emailLabel: UILabel! {
         didSet {
             emailLabel.text = "email".localiz
@@ -60,11 +58,13 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var emailTextField: UITextField! {
         didSet {
             emailTextField.fixTheTextField()
+            emailTextField.delegate = self
         }
     }
     @IBOutlet weak var passwordTextField: UITextField! {
         didSet {
             passwordTextField.fixTheTextField()
+            passwordTextField.delegate = self
         }
     }
     
@@ -147,5 +147,11 @@ class LoginViewController: UIViewController {
             self.errorLabel.alpha = 1
             Activity.removeIndicator(parentView: self.view, childView: activityIndicator)
         }
+    }
+}
+extension LoginViewController:UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
 }

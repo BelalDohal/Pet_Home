@@ -61,11 +61,13 @@ class SignUpViewController: UIViewController {
     @IBOutlet weak var nameTextField: UITextField! {
         didSet {
             nameTextField.fixTheTextField()
+            nameTextField.delegate = self
         }
     }
     @IBOutlet weak var emailTextField: UITextField! {
         didSet {
             emailTextField.fixTheTextField()
+            emailTextField.delegate = self
         }
     }
     @IBOutlet weak var locationTextField: UITextField! {
@@ -78,21 +80,25 @@ class SignUpViewController: UIViewController {
     @IBOutlet weak var cityTextField: UITextField! {
         didSet {
             cityTextField.fixTheTextField()
+            cityTextField.delegate = self
         }
     }
     @IBOutlet weak var phoneNumberTextField: UITextField! {
         didSet {
             phoneNumberTextField.fixTheTextField()
+            phoneNumberTextField.delegate = self
         }
     }
     @IBOutlet weak var passwordTextField: UITextField! {
         didSet {
             passwordTextField.fixTheTextField()
+            passwordTextField.delegate = self
         }
     }
     @IBOutlet weak var confirmPasswordTextField: UITextField! {
         didSet {
             confirmPasswordTextField.fixTheTextField()
+            confirmPasswordTextField.delegate = self
         }
     }
     
@@ -288,9 +294,7 @@ extension SignUpViewController: UIImagePickerControllerDelegate,UINavigationCont
         let galaryAction = UIAlertAction(title: "Photo Album".localiz, style: .default) { Action in
             self.getImage(from: .photoLibrary)
         }
-        let dismessAction = UIAlertAction(title: "Cancle".localiz, style: .destructive) { Action in
-            self.dismiss(animated: true, completion: nil)
-        }
+        let dismessAction = UIAlertAction(title: "Cancle".localiz, style: .destructive) { Action in }
         alert.addAction(cameraAction)
         alert.addAction(galaryAction)
         alert.addAction(dismessAction)

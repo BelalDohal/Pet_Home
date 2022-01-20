@@ -24,7 +24,14 @@ class AdoptionPostsTableViewCell: UITableViewCell {
         }
     }
     @IBOutlet weak var petNameLabel: UILabel!
-    @IBOutlet weak var userNameLabel: UILabel!
+    @IBOutlet weak var userNameLabel: UILabel! {
+        didSet {
+            userNameLabel.layer.borderColor = UIColor.systemGreen.cgColor
+            userNameLabel.layer.cornerRadius = userNameLabel.frame.height/2
+            userNameLabel.layer.masksToBounds = true
+
+        }
+    }
     @IBOutlet weak var petDescreptionLabel: UILabel!
     // Upload The Cell
     func configure(with adoptionPost:AdoptionPost) -> UITableViewCell {

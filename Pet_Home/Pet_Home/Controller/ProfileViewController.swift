@@ -82,7 +82,10 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var userLocationAndCity: UILabel!
     @IBOutlet weak var profileNavigationItem: UINavigationItem!
     @IBOutlet weak var goToSettingsNavegationItem: UIBarButtonItem!
-    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        getCurrentUserData()
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         getCurrentUserData()
@@ -122,15 +125,7 @@ class ProfileViewController: UIViewController {
         }
     }
     @IBAction func logOutPressed(_ sender: Any) {
-        do {
-            try Auth.auth().signOut()
-            if let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "LandingNavigationContoller") as? UINavigationController {
-                vc.modalPresentationStyle = .fullScreen
-                self.present(vc, animated: true, completion: nil)
-            }
-        } catch  {
-            print("ERROR in signout",error.localizedDescription)
-        }
+        showLogoutAlert()
     }
     func getCurrentUserData() {
         let refrance = Firestore.firestore()
@@ -161,7 +156,7 @@ class ProfileViewController: UIViewController {
     }
     func getAdoptionPosts() {
         let ref = Firestore.firestore()
-        ref.collection("posts").order(by: "updatedAt",descending: true).addSnapshotListener { snapshot, error in
+        ref.collection("posts").order(by: "createdAt",descending: true).addSnapshotListener { snapshot, error in
             if let error = error {
                 print("DB ERROR Posts",error.localizedDescription)
             }
@@ -229,6 +224,22 @@ class ProfileViewController: UIViewController {
             }
         }
     }
+    func showLogoutAlert() {
+        let alert = UIAlertController(title: "Logout", message: "You want to logout", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
+        alert.addAction(UIAlertAction(title: "Yes", style: .destructive, handler: { Action in
+            do {
+                try Auth.auth().signOut()
+                if let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "LandingNavigationContoller") as? UINavigationController {
+                    vc.modalPresentationStyle = .fullScreen
+                    self.present(vc, animated: true, completion: nil)
+                }
+            } catch  {
+                print("ERROR in signout",error.localizedDescription)
+            }
+        }))
+        present(alert, animated: true)
+    }
 }
 extension ProfileViewController: UITableViewDelegate,UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -239,7 +250,7 @@ extension ProfileViewController: UITableViewDelegate,UITableViewDataSource {
         return cell.configure(with: currentUserAdoptionPosts[indexPath.row])
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return userAdoptionPostsCollectionView.frame.width
+        return userAdoptionPostsCollectionView.frame.width + 60
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath) as! AdoptionPostsTableViewCell

@@ -1,5 +1,6 @@
 import UIKit
 import Firebase
+import SwiftUI
 
 class HomeViewController: UIViewController {
     var adoptionPosts = [AdoptionPost]()
@@ -71,9 +72,13 @@ class HomeViewController: UIViewController {
             homeNavigationItem.title = "home".localiz
         }
     }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        getCurrentUserData()
+    }
+    // View Did Load
     override func viewDidLoad() {
         super.viewDidLoad()
-        getCurrentUserData()
         getAdoptionPosts()
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -89,15 +94,7 @@ class HomeViewController: UIViewController {
         hideAndShowSideMenu()
     }
     @IBAction func logOutPressed(_ sender: Any) {
-        do {
-            try Auth.auth().signOut()
-            if let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "LandingNavigationContoller") as? UINavigationController {
-                vc.modalPresentationStyle = .fullScreen
-                self.present(vc, animated: true, completion: nil)
-            }
-        } catch  {
-            print("ERROR in signout",error.localizedDescription)
-        }
+        showLogoutAlert()
     }
     @IBAction func profileSideMenuPressed(_ sender: Any) {
         goToProfile()
@@ -107,7 +104,6 @@ class HomeViewController: UIViewController {
         goToPost()
         hideSideMenu()
     }
-    // Upload The Current User Data Function.
     func getCurrentUserData() {
         let refrance = Firestore.firestore()
         if let currentUser = Auth.auth().currentUser {
@@ -132,7 +128,6 @@ class HomeViewController: UIViewController {
             }
         }
     }
-    // Upload The collection View Main Function.
     func getAdoptionPosts() {
         let ref = Firestore.firestore()
         ref.collection("posts").order(by: "createdAt",descending: true).addSnapshotListener { snapshot, error in
@@ -167,7 +162,11 @@ class HomeViewController: UIViewController {
                         }
                     case .modified:
                         let postId = diff.document.documentID
-                        if let updateIndex = self.adoptionPosts.firstIndex(where: {$0.id == postId}) {
+                        if let currentPost = self.adoptionPosts.first(where: {$0.id == postId}),
+                           let updateIndex = self.adoptionPosts.firstIndex(where: {$0.id == postId}){
+                            let newPost = AdoptionPost(dict:post, id: postId, user: currentPost.user)
+                            self.adoptionPosts[updateIndex] = newPost
+                            
                             self.adoptionPostTabelView.beginUpdates()
                             self.adoptionPostTabelView.deleteRows(at: [IndexPath(row: updateIndex,section: 0)], with: .left)
                             self.adoptionPostTabelView.insertRows(at: [IndexPath(row: updateIndex,section: 0)],with: .left)
@@ -176,6 +175,8 @@ class HomeViewController: UIViewController {
                     case .removed:
                         let postId = diff.document.documentID
                         if let deleteIndex = self.adoptionPosts.firstIndex(where: {$0.id == postId}){
+                            self.adoptionPosts.remove(at: deleteIndex)
+                            
                             self.adoptionPostTabelView.beginUpdates()
                             self.adoptionPostTabelView.deleteRows(at: [IndexPath(row: deleteIndex,section: 0)], with: .automatic)
                             self.adoptionPostTabelView.endUpdates()
@@ -241,7 +242,23 @@ extension HomeViewController:UITableViewDelegate,UITableViewDataSource {
         performSegue(withIdentifier: "fromHomeToDetails", sender: self)
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return adoptionPostTabelView.frame.width
+        return adoptionPostTabelView.frame.width + 60
+    }
+    func showLogoutAlert() {
+        let alert = UIAlertController(title: "Logout", message: "You want to logout", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
+        alert.addAction(UIAlertAction(title: "Yes", style: .destructive, handler: { Action in
+            do {
+                try Auth.auth().signOut()
+                if let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "LandingNavigationContoller") as? UINavigationController {
+                    vc.modalPresentationStyle = .fullScreen
+                    self.present(vc, animated: true, completion: nil)
+                }
+            } catch  {
+                print("ERROR in signout",error.localizedDescription)
+            }
+        }))
+        present(alert, animated: true)
     }
 }
 extension HomeViewController:UISearchBarDelegate {

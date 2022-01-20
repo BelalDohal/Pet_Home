@@ -20,6 +20,11 @@ class DetailsViewController: UIViewController {
             petImageView.layer.borderColor = UIColor.systemOrange.cgColor
         }
     }
+    @IBOutlet weak var posterLocationLabel: UILabel! {
+        didSet {
+            posterLocationLabel.isHidden = false
+        }
+    }
     @IBOutlet weak var petNameLabel: UILabel!
     @IBOutlet weak var petAgeLabel: UILabel!
     @IBOutlet weak var petGenderLabel: UILabel!
@@ -78,11 +83,13 @@ class DetailsViewController: UIViewController {
             petGenderLabel.text = "\(selectedAdoptionPost.petType) . \(selectedAdoptionPost.petGender) . \(selectedAdoptionPost.petAge)"
             petTypeLabel.text = "\(selectedAdoptionPost.petColor) . \(selectedAdoptionPost.petSize)"
             posterNumberLabel.text = selectedAdoptionPost.user.phoneNumber
+            posterLocationLabel.text = "\(selectedAdoptionPost.user.location) - \(selectedAdoptionPost.user.city)"
             petDescreptionTextView.text = selectedAdoptionPost.petDescreption
             let currentUserId = Auth.auth().currentUser?.uid
             if let currentUserId = currentUserId,
                currentUserId == posterId {
                 userImageAndNumberStackView.isUserInteractionEnabled = true
+                posterLocationLabel.isHidden = true
                 posterNumberLabel.text = "updateThisPost".localiz
                 let tapGesture = UITapGestureRecognizer(target: self, action: #selector(goToPost))
                 userImageAndNumberStackView.addGestureRecognizer(tapGesture)

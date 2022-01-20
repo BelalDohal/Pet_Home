@@ -3,7 +3,7 @@ import Firebase
 
 class PostViewController: UIViewController {
     let imagePickerController = UIImagePickerController()
-    var navigateFrom = ""
+    var navigateFrom = "Home"
     @IBOutlet weak var postNavigationItem: UINavigationItem!
     // Labels
     @IBOutlet weak var petNameLabel: UILabel!
@@ -40,7 +40,7 @@ class PostViewController: UIViewController {
         if trainedSwitch.isOn {
             return "Traned"
         }else {
-            return ""
+            return "Untraned"
         }
     }
     @IBOutlet weak var vaccinatrdSwitch: UISwitch!
@@ -122,7 +122,7 @@ class PostViewController: UIViewController {
             }else {
                 vaccinatrdSwitch.isOn = false
             }
-            if selectedAdoptionPost.houseTrained == "" {
+            if selectedAdoptionPost.houseTrained == "Untraned" {
                 trainedSwitch.isOn = false
             }else {
                 trainedSwitch.isOn = true
@@ -238,12 +238,59 @@ class PostViewController: UIViewController {
                                 print("FireStore Error",error.localizedDescription)
                             }
                             Activity.removeIndicator(parentView: self.view, childView: activityIndicator)
-                            self.navigationController?.popViewController(animated: true)
+                            if self.navigateFrom == "Home" {
+                                if let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "HomeNavigationContoller") as? UINavigationController {
+                                    vc.modalPresentationStyle = .fullScreen
+                                    Activity.removeIndicator(parentView: self.view, childView: activityIndicator)
+                                    self.present(vc, animated: true, completion: nil)
+                                }else{
+                                    let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "profileViewController") as UIViewController
+                                    vc.modalPresentationStyle = .fullScreen
+                                    Activity.removeIndicator(parentView: self.view, childView: activityIndicator)
+                                    self.present(vc, animated: true, completion: nil)
+                                }
+                            }
                         }
                     }
                 }
             }
         }
+    }
+    func showDeleteAlert() {
+        let deletePostAlert = UIAlertController(title: "Delete Post", message: "Are you shore you want do delete this post", preferredStyle: .alert)
+        deletePostAlert.addAction(UIAlertAction(title: "Yes", style: .destructive, handler: { Action in
+            let ref = Firestore.firestore().collection("posts")
+            if let selectedAdoptionPost = self.selectedAdoptionPost {
+                Activity.showIndicator(parentView: self.view, childView: activityIndicator)
+                ref.document(selectedAdoptionPost.id).delete { error in
+                    if let error = error {
+                        print("Error in db delete",error)
+                    }else {
+                        let storageRef = Storage.storage().reference(withPath: "posts/\(selectedAdoptionPost.user.id)/\(selectedAdoptionPost.id)")
+                        storageRef.delete { error in
+                            if let error = error {
+                                print("Error in storage delete",error)
+                            } else {
+                                if self.navigateFrom == "Home" {
+                                    if let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "HomeNavigationContoller") as? UINavigationController {
+                                        vc.modalPresentationStyle = .fullScreen
+                                        Activity.removeIndicator(parentView: self.view, childView: activityIndicator)
+                                        self.present(vc, animated: true, completion: nil)
+                                    }else{
+                                        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "profileViewController") as UIViewController
+                                        vc.modalPresentationStyle = .fullScreen
+                                        Activity.removeIndicator(parentView: self.view, childView: activityIndicator)
+                                        self.present(vc, animated: true, completion: nil)
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }))
+        deletePostAlert.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
+        present(deletePostAlert, animated: true)
     }
 }
 extension PostViewController: UIImagePickerControllerDelegate,UINavigationControllerDelegate {
@@ -258,9 +305,7 @@ extension PostViewController: UIImagePickerControllerDelegate,UINavigationContro
         let galaryAction = UIAlertAction(title: "Photo Album".localiz, style: .default) { Action in
             self.getImage(from: .photoLibrary)
         }
-        let dismessAction = UIAlertAction(title: "Cancle".localiz, style: .destructive) { Action in
-            self.dismiss(animated: true, completion: nil)
-        }
+        let dismessAction = UIAlertAction(title: "Cancle".localiz, style: .destructive) { Action in }
         alert.addAction(cameraAction)
         alert.addAction(galaryAction)
         alert.addAction(dismessAction)
@@ -282,5 +327,3 @@ extension PostViewController: UIImagePickerControllerDelegate,UINavigationContro
         picker.dismiss(animated: true, completion: nil)
     }
 }
-/*
- */

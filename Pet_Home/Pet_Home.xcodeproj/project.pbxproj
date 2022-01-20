@@ -13,7 +13,6 @@
 		DC79461427876DE2005E092A /* ChangeProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC79461327876DE2005E092A /* ChangeProfileViewController.swift */; };
 		DC7C8ED7278AB5E60005A6AE /* LanguagesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC7C8ED6278AB5E50005A6AE /* LanguagesTableViewCell.swift */; };
 		DC92919E27905822000DE076 /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = DC92919D27905822000DE076 /* IQKeyboardManagerSwift */; };
-		DC9291A027905A11000DE076 /* SignCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC92919F27905A11000DE076 /* SignCollectionViewCell.swift */; };
 		DC9291A2279377B8000DE076 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9291A1279377B8000DE076 /* SignUpViewController.swift */; };
 		DC9291A42793A154000DE076 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9291A32793A154000DE076 /* LoginViewController.swift */; };
 		DCA551602779D87100ECD1BC /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA5515F2779D87100ECD1BC /* PostViewController.swift */; };
@@ -44,7 +43,6 @@
 		DC79461127876DC2005E092A /* LanguageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageViewController.swift; sourceTree = "<group>"; };
 		DC79461327876DE2005E092A /* ChangeProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeProfileViewController.swift; sourceTree = "<group>"; };
 		DC7C8ED6278AB5E50005A6AE /* LanguagesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguagesTableViewCell.swift; sourceTree = "<group>"; };
-		DC92919F27905A11000DE076 /* SignCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignCollectionViewCell.swift; sourceTree = "<group>"; };
 		DC9291A1279377B8000DE076 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		DC9291A32793A154000DE076 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		DCA5515F2779D87100ECD1BC /* PostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
@@ -110,10 +108,10 @@
 				DCF0BD78277633D40038FAF9 /* Controller */,
 				DCF0BD79277633E50038FAF9 /* View */,
 				DCD94C2D27810BE300319912 /* Localizable.strings */,
-				DCF0BD62277623320038FAF9 /* AppDelegate.swift */,
-				DCF0BD64277623320038FAF9 /* SceneDelegate.swift */,
-				DCF0BD6B277623360038FAF9 /* Assets.xcassets */,
 				DCF0BD6D277623360038FAF9 /* LaunchScreen.storyboard */,
+				DCF0BD64277623320038FAF9 /* SceneDelegate.swift */,
+				DCF0BD62277623320038FAF9 /* AppDelegate.swift */,
+				DCF0BD6B277623360038FAF9 /* Assets.xcassets */,
 				DCF0BD70277623360038FAF9 /* Info.plist */,
 				DC2042B827944B3900EBAAA6 /* GoogleService-Info.plist */,
 			);
@@ -150,7 +148,6 @@
 				DCF0BD68277623320038FAF9 /* Main.storyboard */,
 				DCA5516B277B3F8B00ECD1BC /* AdoptionPostsCollectionViewCell.swift */,
 				DC7C8ED6278AB5E50005A6AE /* LanguagesTableViewCell.swift */,
-				DC92919F27905A11000DE076 /* SignCollectionViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -254,7 +251,6 @@
 				DCA551602779D87100ECD1BC /* PostViewController.swift in Sources */,
 				DCF0BD93277728250038FAF9 /* AdoptionPost.swift in Sources */,
 				DC79461427876DE2005E092A /* ChangeProfileViewController.swift in Sources */,
-				DC9291A027905A11000DE076 /* SignCollectionViewCell.swift in Sources */,
 				DCF0BD8D277668650038FAF9 /* ImageView.swift in Sources */,
 				DC79461227876DC2005E092A /* LanguageViewController.swift in Sources */,
 				DCA551642779DCC600ECD1BC /* DetailsViewController.swift in Sources */,
