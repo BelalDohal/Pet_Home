@@ -9,12 +9,6 @@ class HomeViewController: UIViewController {
     let navigatedFrom = "Home"
     var hiddenSideMenu = true
     // Side Menue
-    @IBOutlet weak var mainStackView: UIStackView! {
-        didSet {
-            //            let tapGesture = UITapGestureRecognizer(target: self, action: #selector(hideSideMenu))
-            //            mainStackView.addGestureRecognizer(tapGesture)
-        }
-    }
     @IBOutlet weak var sideMenuView: UIView! {
         didSet {
             sideMenuView.isHidden = true
@@ -80,6 +74,12 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         getAdoptionPosts()
+        let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(hideSideMenu))
+        swipeLeft.direction = .left
+        self.view.addGestureRecognizer(swipeLeft)
+        let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(showSideMenu))
+        swipeRight.direction = .right
+        self.view.addGestureRecognizer(swipeRight)
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let sendTo = segue.destination as? DetailsViewController
@@ -203,6 +203,17 @@ class HomeViewController: UIViewController {
             } completion: { status in
                 self.hiddenSideMenu = true
                 self.sideMenuView.isHidden = true
+            }
+        }
+    }
+    @objc func showSideMenu() {
+        if hiddenSideMenu {
+            UIView.animate(withDuration: 0.3) {
+                self.sideMenuView.isHidden = false
+                self.leftSideMenuConstraint.constant = -10
+                self.view.layoutIfNeeded()
+            } completion: { status in
+                self.hiddenSideMenu = false
             }
         }
     }

@@ -271,18 +271,19 @@ class PostViewController: UIViewController {
                             if let error = error {
                                 print("Error in storage delete",error)
                             } else {
-                                if self.navigateFrom == "Home" {
-                                    if let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "HomeNavigationContoller") as? UINavigationController {
-                                        vc.modalPresentationStyle = .fullScreen
-                                        Activity.removeIndicator(parentView: self.view, childView: activityIndicator)
-                                        self.present(vc, animated: true, completion: nil)
-                                    }else{
-                                        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "profileViewController") as UIViewController
-                                        vc.modalPresentationStyle = .fullScreen
-                                        Activity.removeIndicator(parentView: self.view, childView: activityIndicator)
-                                        self.present(vc, animated: true, completion: nil)
-                                    }
-                                }
+                                self.navigationController?.popViewController(animated: true)
+                                //                                let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "profileViewController") as UIViewController
+                                //                                vc.modalPresentationStyle = .fullScreen
+                                //                                Activity.removeIndicator(parentView: self.view, childView: activityIndicator)
+                                //                                self.present(vc, animated: true, completion: nil)
+                                //                                if self.navigateFrom == "Home" {
+                                //                                                                        if let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "HomeNavigationContoller") as? UINavigationController {
+                                //                                                                            vc.modalPresentationStyle = .fullScreen
+                                //                                                                            Activity.removeIndicator(parentView: self.view, childView: activityIndicator)
+                                //                                                                            self.present(vc, animated: true, completion: nil)
+                                //                                    self.navigationController?.popViewController(animated: true)
+                                //                                }else{
+                                //                                }
                             }
                         }
                     }

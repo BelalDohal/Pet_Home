@@ -34,12 +34,12 @@ class SignUpViewController: UIViewController {
     }
     @IBOutlet weak var locationLabel: UILabel! {
         didSet {
-            locationLabel.text = "location".localiz
+            locationLabel.text = "city".localiz
         }
     }
     @IBOutlet weak var cityLabel: UILabel! {
         didSet {
-            cityLabel.text = "city".localiz
+            cityLabel.text = "location".localiz
         }
     }
     @IBOutlet weak var phoneNumberLabel: UILabel! {
@@ -61,18 +61,18 @@ class SignUpViewController: UIViewController {
     @IBOutlet weak var nameTextField: UITextField! {
         didSet {
             nameTextField.fixTheTextField()
-            nameTextField.delegate = self
+//            nameTextField.delegate = self
         }
     }
     @IBOutlet weak var emailTextField: UITextField! {
         didSet {
             emailTextField.fixTheTextField()
-            emailTextField.delegate = self
+//            emailTextField.delegate = self
         }
     }
     @IBOutlet weak var locationTextField: UITextField! {
         didSet {
-            locationTextField.delegate = self
+//            locationTextField.delegate = self
             locationTextField.addTarget(self, action: #selector(searchRecord(from:)), for: .editingChanged)
             locationTextField.fixTheTextField()
         }
@@ -80,25 +80,25 @@ class SignUpViewController: UIViewController {
     @IBOutlet weak var cityTextField: UITextField! {
         didSet {
             cityTextField.fixTheTextField()
-            cityTextField.delegate = self
+//            cityTextField.delegate = self
         }
     }
     @IBOutlet weak var phoneNumberTextField: UITextField! {
         didSet {
             phoneNumberTextField.fixTheTextField()
-            phoneNumberTextField.delegate = self
+//            phoneNumberTextField.delegate = self
         }
     }
     @IBOutlet weak var passwordTextField: UITextField! {
         didSet {
             passwordTextField.fixTheTextField()
-            passwordTextField.delegate = self
+//            passwordTextField.delegate = self
         }
     }
     @IBOutlet weak var confirmPasswordTextField: UITextField! {
         didSet {
             confirmPasswordTextField.fixTheTextField()
-            confirmPasswordTextField.delegate = self
+//            confirmPasswordTextField.delegate = self
         }
     }
     
@@ -276,12 +276,11 @@ extension SignUpViewController: UITableViewDelegate, UITableViewDataSource {
         hideLocationsTableView()
     }
 }
-extension SignUpViewController:UITextFieldDelegate {
-    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
-        displayLocationsTableView()
-        return true
-    }
-}
+//extension SignUpViewController:UITextFieldDelegate {
+//    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+//        return true
+//    }
+//}
 extension SignUpViewController: UIImagePickerControllerDelegate,UINavigationControllerDelegate {
     @objc func selectImage() {
         showAlert()

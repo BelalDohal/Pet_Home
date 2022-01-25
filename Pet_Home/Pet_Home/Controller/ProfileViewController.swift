@@ -82,6 +82,7 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var userLocationAndCity: UILabel!
     @IBOutlet weak var profileNavigationItem: UINavigationItem!
     @IBOutlet weak var goToSettingsNavegationItem: UIBarButtonItem!
+    @IBOutlet weak var userInfoConstraint: NSLayoutConstraint!
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         getCurrentUserData()
@@ -193,7 +194,11 @@ class ProfileViewController: UIViewController {
                         }
                     case .modified:
                         let postId = diff.document.documentID
-                        if let updateIndex = self.currentUserAdoptionPosts.firstIndex(where: {$0.id == postId}) {
+                        if let updateIndex = self.currentUserAdoptionPosts.firstIndex(where: {$0.id == postId}),
+                           let currentPost = self.currentUserAdoptionPosts.first(where: {$0.id == postId}) {
+                            let newPost = AdoptionPost(dict:post, id: postId, user: currentPost.user)
+                            self.currentUserAdoptionPosts[updateIndex] = newPost
+                            
                             self.userAdoptionPostsCollectionView.beginUpdates()
                             self.userAdoptionPostsCollectionView.deleteRows(at: [IndexPath(row: updateIndex,section: 0)], with: .left)
                             self.userAdoptionPostsCollectionView.insertRows(at: [IndexPath(row: updateIndex,section: 0)],with: .left)
@@ -202,6 +207,7 @@ class ProfileViewController: UIViewController {
                     case .removed:
                         let postId = diff.document.documentID
                         if let deleteIndex = self.currentUserAdoptionPosts.firstIndex(where: {$0.id == postId}){
+                            self.currentUserAdoptionPosts.remove(at: deleteIndex)
                             self.userAdoptionPostsCollectionView.beginUpdates()
                             self.userAdoptionPostsCollectionView.deleteRows(at: [IndexPath(row: deleteIndex,section: 0)], with: .automatic)
                             self.userAdoptionPostsCollectionView.endUpdates()

@@ -54,6 +54,21 @@ class ChangeProfileViewController: UIViewController {
             updateUserInfoNavigationItem.title = "updateProfile".localiz
         }
     }
+    @IBOutlet weak var cityLabel: UILabel! {
+        didSet {
+            cityLabel.text = "city".localiz
+        }
+    }
+    @IBOutlet weak var locationLabel: UILabel! {
+        didSet {
+            locationLabel.text = "location".localiz
+        }
+    }
+    @IBOutlet weak var numberLabel: UILabel! {
+        didSet {
+            numberLabel.text = "phoneNumber".localiz
+        }
+    }
     let imagePickerController = UIImagePickerController()
     override func viewDidLoad() {
         super.viewDidLoad()
